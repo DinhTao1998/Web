@@ -25,7 +25,7 @@ class GetDealController extends Controller
     public function getSearch(request $req){
          $key_search = $req->key;
              # code...
-        $product = Product::where('product_name','like','%'.$req->key.'%')->orderBy('price','asc')->take(100)->paginate(10);
+        $product = Product::where('product_name','like','%'.$req->key.'%')->orderBy('price','asc')->take(100)->paginate(20);
        
         return view('page.search',['product'=>$product,'key_search'=>$key_search]);
     }

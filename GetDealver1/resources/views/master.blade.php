@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="GetDeal/css/style.css">
   <!-- skin -->
   <link rel="stylesheet" href="GetDeal/skin/default.css">
+  
 
   <!-- =======================================================
     Theme Name: Vlava

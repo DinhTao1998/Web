@@ -11,12 +11,12 @@
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav" data-0="margin-top:20px;" data-300="margin-top:5px;">
-          <li class=""><a href="GetDeal/index.html">Trang chủ</a></li>
-          <li><a href="#section-services">Danh mục</a></li>
-          <li><a href="#testimonials ">Thông tin</a></li>
-          <li><a href="#section-about ">Hướng dẫn</a></li>
+          <li class=""><a href="index">Trang chủ</a></li>
+          <li><a href="index#section-services">Danh mục</a></li>
+          <li><a href="index#testimonials ">Thông tin</a></li>
+          <li><a href="index#section-about ">Hướng dẫn</a></li>
           <!-- <li><a href="#section-about">Hướng dẫn</a></li> -->
-          <li><a href=" #section-contact">Liên hệ</a></li>
+          <li><a href=" index#section-contact">Liên hệ</a></li>
           <!-- <li><a href="#section-contact">Liên hệ</a></li> -->
         </ul>
       </div>
