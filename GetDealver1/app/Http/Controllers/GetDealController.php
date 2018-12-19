@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Product;
 use App\ProductType;
+use App\Place;
 // use App\Place;
 use Illuminate\Http\Request;
 
@@ -26,8 +27,86 @@ class GetDealController extends Controller
          $key_search = $req->key;
              # code...
         $product = Product::where('product_name','like','%'.$req->key.'%')->orderBy('price','asc')->take(100)->paginate(20);
+        $count = sizeof( Product::where('product_name','like','%'.$req->key.'%')->orderBy('price','asc')->get());
+        $product_type = ProductType::all();
+        $pr_location = Product::select('location')->distinct()->get();
+        $place = Place::all();
        
-        return view('page.search',['product'=>$product,'key_search'=>$key_search]);
+        return view('page.search',compact('product','key_search','product_type','pr_location','place','count'));
+    }
+    // su dung cho search bang fillter
+     public function getSearch1(request $req){
+         $key_search = $req->key;
+         $count;
+         $product;
+         if($req->pro==null)
+         {
+            if($req->place==null)
+            {
+                if($req->local==null)
+                {
+                    $count = sizeof(Product::all());
+                    $product=Product::paginate(20);
+                }
+                else
+                {
+                    $count = sizeof(Product::where('location',$req->local)->get());
+                    $product=Product::where('location',$req->local)->orderBy('price','asc')->paginate(100);
+                }
+            }
+            else
+            {
+                if($req->local ==null)
+                {
+                     $count = sizeof(Product::where('place',$req->place)->get());
+                    $product=Product::where('place',$req->place)->orderBy('price','asc')->paginate(100);
+                }
+                else
+                {
+                    $count = sizeof(Product::where('place',$req->place)->where('location',$req->local)->get());
+                    $product=Product::where('place',$req->place)->where('location',$req->local)->orderBy('price','asc')->paginate(100);
+                }
+            }
+         }
+         else
+         {
+            if($req->place ==null)
+            {
+                if($req->local==null)
+                {
+
+                    $count = sizeof(Product::where('type_product',$req->pro)->get());
+                    $product=Product::where('type_product',$req->pro)->orderBy('price','asc')->paginate(100);
+                }
+                else
+                {
+                    $count = sizeof(Product::where('type_product',$req->pro)->where('location',$req->local)->get());
+                    $product=Product::where('type_product',$req->pro)->where('location',$req->local)->orderBy('price','asc')->paginate(100);
+                }
+            }
+            else
+            {
+                if($req->local==null)
+                {
+                    $count = sizeof(Product::where('type_product',$req->pro)->where('place',$req->place)->get());
+                    $product=Product::where('type_product',$req->pro)->where('place',$req->place)->orderBy('price','asc')->paginate(100);
+                }
+                else
+                {
+                    $count = sizeof(Product::where('type_product',$req->pro)->where('location',$req->local)->where('place',$req->place)->get());
+                    $product=Product::where('type_product',$req->pro)->where('location',$req->local)->where('place',$req->place)->orderBy('price','asc')->paginate(100);
+                }
+            }
+         }
+
+             # code...
+        // $count = sizeof(Product::where('type_product',$pro)->where('place',$req->place)->get());
+        // $product = Product::where('type_product',$pro)->where('place',$req->place)->where('location',$req->local)->orderBy('price','asc')->paginate(20);
+        $product_type = ProductType::all();
+        $pr_location = Product::select('location')->distinct()->get();
+        $place = Place::all();
+       
+        return view('page.search',compact('product','key_search','product_type','pr_location','place','count'));
     }
 }
 ?>

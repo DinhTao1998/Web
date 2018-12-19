@@ -8,15 +8,18 @@
   <base href="{{ asset('')}}">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="GetDeal/js/rs-plugin/css/settings.css" media="screen">
+
+  {{-- <link rel="stylesheet" type="text/css" href="GetDeal/js/rs-plugin/css/settings.css" media="screen"> --}}
   <link rel="stylesheet" type="text/css" href="GetDeal/css/isotope.css" media="screen">
   <link rel="stylesheet" href="GetDeal/css/flexslider.css" type="text/css">
   <link rel="stylesheet" href="GetDeal/js/fancybox/jquery.fancybox.css" type="text/css" media="screen">
+
+
   <link rel="stylesheet" href="GetDeal/css/bootstrap.css">
   <link rel="stylesheet" href="GetDeal/css/search_bar.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="GetDeal/css/style.css">
   <!-- skin -->
   <link rel="stylesheet" href="GetDeal/skin/default.css">
@@ -25,7 +28,7 @@
   <!-- =======================================================
     Theme Name: Vlava
     Theme URL: https://bootstrapmade.com/vlava-free-bootstrap-one-page-template/
-    Author: BootstrapMade.com
+    Author: BootstrapMade.comintro-background
     Author URL: https://bootstrapmade.com
   ======================================================= -->
 
@@ -98,4 +101,4 @@
 
 </body>
 
-</html>
+
