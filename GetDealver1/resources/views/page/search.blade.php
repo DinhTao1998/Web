@@ -174,46 +174,7 @@
                                                                 <div class="control__indicator"></div>
                                                             </label>
                                                             @endforeach
-                                                            <!-- <label class="control control--radio custom-radio" data-value="1891">Trang điểm mặt
-                                                                <span>(63)</span>
-                                                                <input type="radio" name="cat" data-value="1968" data-name="Đồ dùng gia đình">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Trang điểm mắt
-                                                                <span>(52)</span>
-                                                                <input type="radio" name="cat" data-value="609" data-name="Ba lô - Túi xách nữ">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Nước Hoa
-                                                                <span>(49)</span>
-                                                                <input type="radio" name="cat" data-value="569" data-name="Phụ kiện Laptop">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Tinh dầu spa
-                                                                <span>(44)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Chăm sóc da mặt
-                                                                <span>(40)</span>
-                                                                <input type="radio" name="cat" data-value="1900" data-name="Bếp các loại">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Chăm sóc cơ thể
-                                                                <span>(39)</span>
-                                                                <input type="radio" name="cat" data-value="792" data-name="Tủ đựng - Sắp xếp đồ">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Chăm sóc tóc
-                                                                <span>(15)</span>
-                                                                <input type="radio" name="cat" data-value="694" data-name="Thực phẩm chức năng">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Thực phẩm chức năng
-                                                                <span>(44)</span>
-                                                                <input type="radio" name="cat" data-value="1833" data-name="Ba lô - Cặp - Túi xách nam">
-                                                                <div class="control__indicator"></div>
-                                                            </label> -->
+                                                            
                                                        
                                                     </div>
                                                 </div>
