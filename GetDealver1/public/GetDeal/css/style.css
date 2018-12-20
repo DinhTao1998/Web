@@ -14,6 +14,7 @@
 @import url('animate.css');
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
 /*==========================================================================
   General
   ========================================================================== */
@@ -372,6 +373,7 @@ section.section {
 	font-size: 14px;
 	letter-spacing: .1em;
 	text-transform: uppercase;
+	font-family: 'Roboto', sans-serif;
 }
 
 .nav>li>a:hover {

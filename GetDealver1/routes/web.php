@@ -26,3 +26,7 @@ Route::get('search',[
 	'as'=>'search',
 	'uses'=> 'GetDealController@getSearch'
 ]);
+Route::get('search1',[
+	'as'=>'search1',
+	'uses'=> 'GetDealController@getSearch1'
+]);
