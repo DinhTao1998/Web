@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="GetDeal/Home page/css/search_bar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
 
   </head>
 
@@ -161,7 +161,7 @@
                                 <div class="filter-inner">
                                     <div class="filter-item">
                                         <div class="filter-text">
-                                            <input type="text" placeholder="Chọn thuộc tính">
+                                            
                                         </div>
                                         <div class="filter-list mCustomScrollbar _mCS_1" style="overflow: auto; height: 258px;">
                                             <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
@@ -195,7 +195,7 @@
                                         <hr class="hr-filter">
                                         <h4 data-property-id="region" data-type="4" class="my-1">Địa chỉ nơi bán</h4>
                                         <div class="filter-text">
-                                            <input type="text" placeholder="Tìm kiếm...">
+                                            
                                         </div>
                                         <div class="filter-list mCustomScrollbar _mCS_2" style="overflow: auto; ">
                                             <div id="mCSB_2" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
@@ -267,13 +267,13 @@
                                         <hr class="hr-filter">
                                         <h4 data-property-id="merchant" data-type="1" class="my-1">Cửa hàng</h4>
                                         <div class="filter-text">
-                                            <input type="text" placeholder="Chọn cửa hàng">
+                                            
                                         </div>
                                         <div class="filter-list mCustomScrollbar _mCS_3" style="overflow: auto; ;">
                                             <div id="mCSB_3" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
                                                 <div id="mCSB_3_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
                                                     <div class="control-group">
-                                                                                                                    @foreach ($place as $p)
+                                                  @foreach ($place as $p)
                                                             <label class="control control--checkbox custom-radio" data-value="1891">{{$p->place_name}}
                                                                 <span>(440)</span>
                                                                 <input type="checkbox" name="place" value="{{$p->id}}" data-value="{{$p->id}}}" data-name="{{$p->place_name}}">
@@ -371,7 +371,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit">tìm</button>
+                                <button type="submit">Lọc</button>
                                 </form>
                                 <!-- /tags -->
                             </div>
@@ -384,7 +384,9 @@
                                   
                                     <div class="card h-100">
                                       <a href="{{$value -> link}}">
-                                        <img class="card-img-top" src="{{$value -> image}}" alt=""></a>
+                                        <div class="card-img" style="height: 211.75px;">
+                                            <img class="card-img-top" src="{{$value -> image}}" alt=""></a>  
+                                        </div>
                                         
                                         <div class="card-body">
                                             

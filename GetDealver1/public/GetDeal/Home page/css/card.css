@@ -1,23 +1,30 @@
 h4 a{
-	color: #404040;
+    color: #404040;
     text-decoration: none;
     background-color: transparent;
 }
 
+.card-body{
+    padding: 1rem !important;
+}
 .card-body h4{
-	font-size: 14px;
+    font-size: 14px;
     font-weight: 500;
     line-height: 1.4;
 }
 
 h4 a:hover{
-	color: #404040;
+    color: #404040;
     text-decoration: none;
     background-color: transparent;
 }
 
+.card-img{
+    height: 211.75px;
+}
+
 .card-title{
-	
+
 }
 
 .final-price{
@@ -29,7 +36,7 @@ h4 a:hover{
 }
 
 .price-regular{
-	margin-left: 3.5%;
+    margin-left: 3.5%;
     text-decoration: line-through;
     color: #9e9e9e;
     /* width: 45%; */
@@ -38,7 +45,7 @@ h4 a:hover{
 }
 
 .sale-tag{
-	margin-left: 3.5%;
+    margin-left: 3.5%;
     color: #FF3B26;
     font-size: 16px;
     /* width: 45%; */
@@ -48,19 +55,20 @@ h4 a:hover{
 }
 
 .img-src{
-	width: 70px;
+    width: 70px;
     margin-left: 30px !important;
     float: right;
 }
 
 .card{
-	border-radius: .60rem;
+    border-radius: .60rem;
 }
 
 .card-img-top {
     width: 100%;
     border-top-left-radius: calc(.60rem - 1px);
     border-top-right-radius: calc(.60rem - 1px);
+    height: 211.75px;
 }
 
 .card:hover{
@@ -71,7 +79,7 @@ h4 a:hover{
 
 @media (max-width: 993px){
  .col-md-hide{
-	display: none;
+    display: none;
  }
 }
 .navbar-nav >li>a
