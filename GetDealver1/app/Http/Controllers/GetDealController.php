@@ -37,6 +37,16 @@ class GetDealController extends Controller
     }
     // su dung cho search bang fillter
      public function getSearch1(request $req){
+        // $pro = $req->pro;
+        // $place = $req->place;
+        // $local = $req ->local;
+        // if($pro == null)
+        //     $pro ='';
+        // if($local == null)
+        //     $local ='';
+        // if($place == null)
+        //     $place ='';
+        // dd($local);
          $key_search = $req->key;
          $count;
          $product;
@@ -108,6 +118,23 @@ class GetDealController extends Controller
         $place = Place::all();
        
         return view('page.search',compact('product','key_search','product_type','pr_location','place','count'));
+    }
+    public function filtersearch(request $request)
+    {
+        $pro = $req->pro;
+        $place = $req->place;
+        $local = $req ->local;
+        if($pro == null)
+            $pro ='';
+        if($local == null)
+            $local ='';
+        if($place == null)
+            $place ='';
+        $key_search = $req->key;
+        $count = sizeof(Product::where('type_product',$pro)->where('location',$local)->where('place',$place)->get());
+        $product=Product::where('type_product',$pro)->where('location',$local)->where('place',$place)->orderBy('price','asc')->paginate(100);
+        return view('page.filtersearch',compact('product','count','key_search'));
+
     }
 }
 ?>

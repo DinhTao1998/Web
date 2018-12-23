@@ -30,3 +30,13 @@ Route::get('search1',[
 	'as'=>'search1',
 	'uses'=> 'GetDealController@getSearch1'
 ]);
+Route::get('filtersearch',[
+	'as'=>'filtersearch',
+	'uses'=> 'GetDealController@getSearch'
+]);
+Route:: group(['prefix'=>'ajax'],function(){
+	Route::get('filtersearch/{key}/{local}/{place}','AjaxController@filterSearch');
+});
+Route:: group(['prefix'=>'ajax'],function(){
+	Route::get('searchresult/{key}/{local}/{place}','AjaxController@searchResult');
+});

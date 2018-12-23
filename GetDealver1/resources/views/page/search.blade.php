@@ -15,14 +15,15 @@
 
     <!-- Custom styles for this template -->
     <link href="GetDeal/Home page/css/shop-homepage.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> --}}
     <!-- My css -->
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/gird.css">
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/card.css">
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/filter.css">
     <link rel="stylesheet" href="GetDeal/Home page/css/search_bar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
     
 
   </head>
@@ -40,7 +41,7 @@
         <div class="col-lg-4 col-md-7 col-sm-8 col-xs-8 thanhsearch" >
             <form action="{{route('search')}}" method="get" accept-charset="utf-8" role="search" >
       <div class="search_bar" focus="none" >
-      <input class ="search" placeholder="Tìm kiếm sản phẩm..." type="search" name="key" focus="none" autofocus="true">
+      <input class ="search" placeholder="Tìm kiếm sản phẩm..." type="search" name="key" focus="none" autofocus="true" value="{{$key_search}}" id="key_search">
       <button class="btn_search" type="submit"><i class="fa fa-search"></i></button>
       </div>
       </form>
@@ -171,7 +172,7 @@
 
                                                             @foreach($product_type as $pt)
                                                             <label class="control control--radio" data-value="1891">
-                                                                <input type="radio" name="pro" value="{{$pt->id}}" data-name="{{$pt->product_type_name}}">{{$pt->product_type_name}}
+                                                                <input class="checkvalue pro" type="radio" name="pro" value="{{$pt->id}}" data-name="{{$pt->product_type_name}}">{{$pt->product_type_name}}
                                                                 <span>(798)</span>
                                                                 <div class="control__indicator"></div>
                                                             </label>
@@ -205,7 +206,7 @@
                                                             @foreach($pr_location as $p)
                                                             <label class="control control--radio custom-radio" data-value="1891">{{$p->location}}
                                                                 <span>(9424)</span>
-                                                                <input type="radio" name="local" value="{{$p->location}}" data-name="{{$p->location}}">
+                                                                <input class="checkvalue local" type="radio" name="local" value="{{$p->location}}" data-name="{{$p->location}}">
                                                                 <div class="control__indicator"></div>
                                                             </label>
                                                             @endforeach
@@ -276,7 +277,7 @@
                                                   @foreach ($place as $p)
                                                             <label class="control control--checkbox custom-radio" data-value="1891">{{$p->place_name}}
                                                                 <span>(440)</span>
-                                                                <input type="checkbox" name="place" value="{{$p->id}}" data-value="{{$p->id}}}" data-name="{{$p->place_name}}">
+                                                                <input class="checkvalue place" type="checkbox" name="place" value="{{$p->id}}" data-value="{{$p->id}}}" data-name="{{$p->place_name}}">
                                                                 <div class="control__indicator"></div>
                                                             </label>
                                                             @endforeach
@@ -377,23 +378,24 @@
                             </div>
                         </div>
                         <!-- /.col-lg-3 -->
-                        <div class="col-lg-10">
+                        <div class="col-lg-10 "  id="filtersearch" >
                             <div class="row">
                                 @foreach($product as $value)
+                                @if($value->cost!=null)
                                 <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4">
                                   
                                     <div class="card h-100">
                                       <a href="{{$value -> link}}">
                                         <div class="card-img" style="height: 211.75px;">
-                                            <img class="card-img-top" src="{{$value -> image}}" alt=""></a>  
+                                            <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
                                         </div>
                                         
                                         <div class="card-body">
                                             
                                             <h4 class="card-title">
-                                                <a href="{{$value -> link}}">{{$value ->product_name}}</a>
+                                                <a href="{{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
-                                            <span class="final-price">{{$value -> price}}đ</span><span class="price-regular">{{$value ->cost}}đ</span><span class="sale-tag">-{{$value ->sale}}</span>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{number_format($value ->cost)}}đ</span><span class="sale-tag">-{{$value ->sale}}</span>
                                             <p class="card-text"></p>
                                         </div>
                                                 <div class="card-footer">
@@ -402,6 +404,31 @@
                                         </div>
                                         </div>
                                     </div>
+                                   
+                                    @else
+                                    <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4">
+                                  
+                                    <div class="card h-100">
+                                      <a href="{{$value -> link}}">
+                                        <div class="card-img" style="height: 211.75px;">
+                                            <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
+                                        </div>
+                                        
+                                        <div class="card-body">
+                                            
+                                            <h4 class="card-title">
+                                                <a href="{{$value -> link}}" >{{$value ->product_name}}</a>
+                                            </h4>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}</span><span class="sale-tag">{{$value ->sale}}</span>
+                                            <p class="card-text"></p>
+                                        </div>
+                                                <div class="card-footer">
+                                            <small class="text-muted">{{$value -> location}}</small>
+                                            <img class="img-src" src="{{$value -> place_image}}">
+                                        </div>
+                                        </div>
+                                    </div>
+                                    @endif
                                     @endforeach
                                    
                                     </div>
@@ -431,7 +458,31 @@
     <!-- Bootstrap core JavaScript -->
     <script src="GetDeal/Home page/vendor/jquery/jquery.min.js"></script>
     <script src="GetDeal/Home page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.checkvalue').change(function(){
+                // var pro = $('[name="pro"]:radio:checked').val();
+                var local = $('[name="local"]:radio:checked').val();
+                if(local ==null)
+                    local ="flag";
+                var place = $('[name="place"]:checkbox:checked').val();
+                if(place==null)
+                place = "flag";
+                var key = document.getElementById("key_search").value;
+                if(key=="")
+                    key="flag";
+                $.get("ajax/filtersearch/"+key+"/"+local+"/"+place,function(data){
+                    $('#filtersearch').html(data);                 
+                });
+                 $.get("ajax/searchresult/"+key+"/"+local+"/"+place,function(data){
+                    $('.search-result').html(data);                 
+                });
+            });
+
+        });
+    </script>
 
   </body>
+  
 
 </html>

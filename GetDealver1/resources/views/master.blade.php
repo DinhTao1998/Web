@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="GetDeal/css/style.css">
   <!-- skin -->
   <link rel="stylesheet" href="GetDeal/skin/default.css">
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- =======================================================
     Theme Name: Vlava
