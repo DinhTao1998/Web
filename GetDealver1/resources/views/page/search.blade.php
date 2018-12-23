@@ -157,17 +157,17 @@
           <div class="row">
             <div class="col-lg-2 col-md-hide">
                 <form action="{{route ('search1')}}" method="get">
-                            <h4 class="my-1">Lọc sản phẩm</h4>
+                            <h4 class="my-1">Danh mục sản phẩm</h4>
                             <div class="filter-warp">
                                 <div class="filter-inner">
                                     <div class="filter-item">
                                         <div class="filter-text">
                                             
                                         </div>
-                                        <div class="filter-list mCustomScrollbar _mCS_1" style="overflow: auto; height: 258px;">
-                                            <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
+                                        <div class="filter-list mCustomScrollbar _mCS_1 scrollbar-filter style-3" style="overflow: auto; height: 258px;" >
+                                            <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0" >
                                                 <div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
-                                                    <div class="control-group">
+                                                    <div class="control-group scrollbar-filter">
                                                         
 
                                                             @foreach($product_type as $pt)
@@ -177,7 +177,7 @@
                                                                 <div class="control__indicator"></div>
                                                             </label>
                                                             @endforeach
-                                                            
+                                                         <div class="force-overflow"></div>   
                                                        
                                                     </div>
                                                 </div>
@@ -210,47 +210,6 @@
                                                                 <div class="control__indicator"></div>
                                                             </label>
                                                             @endforeach
-                                                            <!-- <label class="control control--radio custom-radio" data-value="1891">Hà Nội
-                                                                <span>(9244)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Đà Nẵng
-                                                                <span>(4644)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Cần Thơ
-                                                                <span>(474)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Thừa Thiên - Huế
-                                                                <span>(64)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Hải Phòng
-                                                                <span>(44)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Quảng Trị
-                                                                <span>(34)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Đồng Nai
-                                                                <span>(4)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--radio custom-radio" data-value="1891">Bình Thuận
-                                                                <span>(14)</span>
-                                                                <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label> -->
-                                                      
                                                     </div>
                                                 </div>
                                                 <div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-dark mCSB_scrollTools_vertical" style="display: block;">
@@ -281,48 +240,6 @@
                                                                 <div class="control__indicator"></div>
                                                             </label>
                                                             @endforeach
-                                                       
-                                                           <!--  <label class="control control--checkbox custom-radio" data-value="1891">Shoppe.vn
-                                                                <span>(144)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label> -->
-                                                            <!-- <label class="control control--checkbox custom-radio" data-value="1891">Sendo.vn
-                                                                <span>(15)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label> -->
-                                                          <!--   <label class="control control--checkbox custom-radio" data-value="1891">Tiki.vn
-                                                                <span>(5)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--checkbox custom-radio" data-value="1891">Hasaki.vn
-                                                                <span>(442)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label> -->
-                                                           <!--  <label class="control control--checkbox custom-radio" data-value="1891">Lotte.vn
-                                                                <span>(44)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--checkbox custom-radio" data-value="1891">Shopmatmoc.com
-                                                                <span>(144)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--checkbox custom-radio" data-value="1891">3cevietnam.com.vn
-                                                                <span>(424)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label>
-                                                            <label class="control control--checkbox custom-radio" data-value="1891">Thegioiskinfood.vn
-                                                                <span>(4)</span>
-                                                                <input type="checkbox" name="cat" data-value="120" data-name="Sản phẩm cho bé">
-                                                                <div class="control__indicator"></div>
-                                                            </label> -->
-                                                       
                                                     </div>
                                                 </div>
                                                 <div id="mCSB_3_scrollbar_vertical" class="mCSB_scrollTools mCSB_3_scrollbar mCS-dark mCSB_scrollTools_vertical" style="display: block;">
@@ -384,21 +301,21 @@
                                 @if($value->cost!=null)
                                 <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4">
                                   
-                                    <div class="card h-100">
+                                    <div class="card h-100 grow">
                                       <a href="{{$value -> link}}">
                                         <div class="card-img" style="height: 211.75px;">
                                             <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
                                         </div>
                                         
                                         <div class="card-body">
-                                            
+                                            {{-- <div class="sale-tag-red">FLASH SALE</div> --}}
                                             <h4 class="card-title">
                                                 <a href="{{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
                                             <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{number_format($value ->cost)}}đ</span><span class="sale-tag">-{{$value ->sale}}</span>
                                             <p class="card-text"></p>
                                         </div>
-                                                <div class="card-footer">
+                                        <div class="card-footer">
                                             <small class="text-muted">{{$value -> location}}</small>
                                             <img class="img-src" src="{{$value -> place_image}}">
                                         </div>
@@ -408,7 +325,7 @@
                                     @else
                                     <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4">
                                   
-                                    <div class="card h-100">
+                                    <div class="card h-100 grow">
                                       <a href="{{$value -> link}}">
                                         <div class="card-img" style="height: 211.75px;">
                                             <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
@@ -417,6 +334,7 @@
                                         <div class="card-body">
                                             
                                             <h4 class="card-title">
+
                                                 <a href="{{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
                                             <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}</span><span class="sale-tag">{{$value ->sale}}</span>

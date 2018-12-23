@@ -5,12 +5,13 @@ h4 a{
 }
 
 .card-body{
-    padding: 1rem !important;
+    padding: 12px !important;
 }
 .card-body h4{
     font-size: 14px;
     font-weight: 500;
     line-height: 1.4;
+    word-spacing: -1px;
 }
 
 h4 a:hover{
@@ -24,7 +25,13 @@ h4 a:hover{
 }
 
 .card-title{
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: inherit;
+    -webkit-line-clamp: 2;
+    height: 40px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .final-price{
@@ -55,7 +62,7 @@ h4 a:hover{
 }
 
 .img-src{
-    width: 70px;
+    height: 25px;
     margin-left: 30px !important;
     float: right;
 }
@@ -93,5 +100,33 @@ h4 a:hover{
     font-size: 13px;
     letter-spacing: .1em;
     text-transform: uppercase;
+}
+
+/*Grow Effect*/
+.grow { transition: all .1s ease-in-out; }
+.grow:hover { transform: scale(1.005); }
+
+.sale-tag-red{
+    float: left;
+    border: 1px solid red;
+    border-radius: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 11px;
+    margin-right: 5px;
+    color: white;
+    background-color: red;
+}
+
+.sale-tag-green{
+    float: left;
+    border: 1px solid green;
+    border-radius: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 12px;
+    margin-right: 5px;
+    color: white;
+    background-color: green;
 }
 

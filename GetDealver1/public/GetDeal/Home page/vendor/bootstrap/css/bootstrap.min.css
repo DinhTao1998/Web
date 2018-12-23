@@ -4826,7 +4826,7 @@ input[type=submit].btn-block {
 }
 
 .card-footer {
-    padding: .75rem 0.75rem;
+    padding: 10px 12px;
     background-color: rgba(0, 0, 0, .03);
     border-top: 1px solid rgba(0, 0, 0, .125)
 }
