@@ -15,7 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="GetDeal/Home page/css/shop-homepage.css" rel="stylesheet">
-    {{-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous"> --}}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- My css -->
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/gird.css">
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/card.css">
@@ -31,7 +31,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-top: 6px;padding-bottom: 5.25px ;background-color: darkslateblue !important;
+    {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-top: 6px;padding-bottom: 5.25px ;background-color: darkslateblue !important;
 }
 ">
       <div class="container" height="60px">
@@ -56,7 +56,7 @@
           <ul class="navbar-nav ml-auto" style="margin-left:0px; width:100%">
             <li class="nav-item active">
               <a class="nav-link" href="index">TRANG CHỦ
-                {{-- <span class="sr-only">(current)</span> --}}
+                <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
@@ -74,7 +74,9 @@
         </div>
     </div>
     </div>
-    </nav>
+    </nav> --}}
+    @include('header')
+
 
     <!-- Page Content -->
     <div class="container">
@@ -126,7 +128,7 @@
 
           <div class="row">
                         <div class="col-lg-2"></div>
-                        <div class="col-lg-10 col-md-4">
+                        <div class="col-lg-10 col-md-12">
                             <div class="list-wrap">
                                 <div class="list-header">
                                     <div class="search-result">
@@ -134,7 +136,7 @@
                                     </div>
                                     <div class="search-action">
                                         <div id="sortType">
-                                            <label class="control">Sắp xếp sản phẩm:</label>
+                                            <label class="control">Sắp xếp :</label>
                                             <label class="control control--radio"> Đáng quan tâm
                                                 <input type="radio" name="sort-type" data-name="Đáng quan tâm" data-value="-1" checked>
                                                 <div class="control__indicator"></div>
@@ -155,7 +157,7 @@
                     </div>
 
           <div class="row">
-            <div class="col-lg-2 col-md-3">
+            <div class="col-lg-2 col-md-3" style="margin-bottom: 30px">
                 <form action="{{route ('search1')}}" method="get">       
                             <a data-toggle = "collapse" href="#danhmucsanpham">               
                                <h4 class="my-1" style="float:left;width:90%">Danh mục</h4>
@@ -353,7 +355,7 @@
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{$value -> location}}</small>
-                                            <img class="img-src" src="{{$value -> place_image}}">
+                                            <img class="img-src" style="max-width: 50px" src="{{$value -> place_image}}">
                                         </div>
                                         </div>
                                     </div>
