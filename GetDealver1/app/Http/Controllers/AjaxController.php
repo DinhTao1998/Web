@@ -95,7 +95,7 @@ class AjaxController extends Controller
     //                             }
         
     // }
-    public function filterSearch($key,$local,$place){
+    public function filterSearch($key,$local,$place,$price,$flag){
         if($key=='flag')
             $key = '%';
         else
@@ -104,7 +104,44 @@ class AjaxController extends Controller
             $place = '%';
         if($local=='flag')
             $local = '%';
-        $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->orderBy('price','asc')->get();
+        $giadau;
+        $giacuoi;
+        if($price=='flag')
+        {
+            $giadau= '0';
+            $giacuoi= '1000000000';
+        }
+         if($price=='1')
+        {
+            $giadau= '0';
+            $giacuoi= '100000';
+        }
+         if($price=='2')
+        {
+            $giadau= '100000';
+            $giacuoi= '200000';
+        }
+         if($price=='3')
+        {
+            $giadau= '200000';
+            $giacuoi= '500000';
+        }
+         if($price=='4')
+        {
+            $giadau= '500000';
+            $giacuoi= '1000000';
+        }
+         if($price=='5')
+        {
+            $giadau= '1000000';
+            $giacuoi= '1000000000';
+        }
+        if($flag =='1')
+        {
+            $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
+        }
+        else
+            $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
         echo "<div class='row'>";
          foreach($product as $pro)
          {
@@ -156,7 +193,7 @@ class AjaxController extends Controller
              </div>";
         }
     }
-     public function searchResult($key,$local,$place){
+     public function searchResult($key,$local,$place,$price,$flag){
         if($key=='flag')
             $key = '%';
         else
@@ -165,7 +202,42 @@ class AjaxController extends Controller
             $place = '%';
         if($local=='flag')
             $local = '%';
-        $product =sizeof(Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->get());
+         $giadau;
+        $giacuoi;
+        if($price=='flag')
+        {
+            $giadau= '0';
+            $giacuoi= '1000000000';
+        }
+         if($price=='1')
+        {
+            $giadau= '0';
+            $giacuoi= '100000';
+        }
+         if($price=='2')
+        {
+            $giadau= '100000';
+            $giacuoi= '200000';
+        }
+         if($price=='3')
+        {
+            $giadau= '200000';
+            $giacuoi= '500000';
+        }
+         if($price=='4')
+        {
+            $giadau= '500000';
+            $giacuoi= '1000000';
+        }
+         if($price=='5')
+        {
+            $giadau= '1000000';
+            $giacuoi= '1000000000';
+        }
+        if($flag=='1')
+        $product =sizeof(Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
+        else
+            $product =sizeof(Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
         echo "<span>Có <b>".$product."</b> kết quả trong mỹ phẩm</span>";
         
     }

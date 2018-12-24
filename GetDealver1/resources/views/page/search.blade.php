@@ -155,25 +155,28 @@
                     </div>
 
           <div class="row">
-            <div class="col-lg-2 col-md-hide">
-                <form action="{{route ('search1')}}" method="get">
-                            <h4 class="my-1">Danh mục sản phẩm</h4>
-                            <div class="filter-warp">
+            <div class="col-lg-2 col-md-3">
+                <form action="{{route ('search1')}}" method="get">       
+                            <a data-toggle = "collapse" href="#danhmucsanpham">               
+                               <h4 class="my-1" style="float:left;width:90%">Danh mục</h4>
+                               <div><i class="fa fa-angle-down" style=""></i></div>
+                            </a>
+                            <div class="filter-warp ">
                                 <div class="filter-inner">
                                     <div class="filter-item">
                                         <div class="filter-text">
                                             
                                         </div>
-                                        <div class="filter-list mCustomScrollbar _mCS_1 scrollbar-filter style-3" style="overflow: auto; height: 258px;" >
+                                        <div class="filter-list mCustomScrollbar _mCS_1 scrollbar-filter style-3" style="overflow: auto; height:auto;" >
                                             <div id="mCSB_1" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0" >
                                                 <div id="mCSB_1_container" class="mCSB_container" style="position: relative; top: 0px; left: 0px;" dir="ltr">
-                                                    <div class="control-group scrollbar-filter">
+                                                    <div class="control-group scrollbar-filter collapse" id="danhmucsanpham" >
                                                         
 
                                                             @foreach($product_type as $pt)
                                                             <label class="control control--radio" data-value="1891">
                                                                 <input class="checkvalue pro" type="radio" name="pro" value="{{$pt->id}}" data-name="{{$pt->product_type_name}}">{{$pt->product_type_name}}
-                                                                <span>(798)</span>
+                                                                <span></span>
                                                                 <div class="control__indicator"></div>
                                                             </label>
                                                             @endforeach
@@ -193,19 +196,22 @@
                                         </div>
                                     </div>
                                     <div class="filter-item">
-                                        <hr class="hr-filter">
-                                        <h4 data-property-id="region" data-type="4" class="my-1">Địa chỉ nơi bán</h4>
+                                        <hr class="hr-filter" style="width:100%">
+                                        <a data-toggle="collapse" href="#diachinoiban">
+                                           <h4 data-property-id="region" data-type="4" class="my-1" style="float:left;width:90%">Địa chỉ nơi bán</h4>
+                                           <div><i class="fa fa-angle-down" style=""></i></div>
+                                        </a>
                                         <div class="filter-text">
                                             
                                         </div>
-                                        <div class="filter-list mCustomScrollbar _mCS_2" style="overflow: auto; ">
+                                        <div class="filter-list mCustomScrollbar _mCS_2" style="overflow: auto;" >
                                             <div id="mCSB_2" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
                                                 <div id="mCSB_2_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
-                                                    <div class="control-group">
+                                                    <div class="control-group collapse"id="diachinoiban" >
                                                        
                                                             @foreach($pr_location as $p)
                                                             <label class="control control--radio custom-radio" data-value="1891">{{$p->location}}
-                                                                <span>(9424)</span>
+                                                                <span></span>
                                                                 <input class="checkvalue local" type="radio" name="local" value="{{$p->location}}" data-name="{{$p->location}}">
                                                                 <div class="control__indicator"></div>
                                                             </label>
@@ -224,18 +230,21 @@
                                         </div>
                                     </div>
                                     <div class="filter-item">
-                                        <hr class="hr-filter">
-                                        <h4 data-property-id="merchant" data-type="1" class="my-1">Cửa hàng</h4>
+                                        <hr class="hr-filter" style="width:100%">
+                                        <a data-toggle="collapse" href="#cuahang" role ="button">
+                                            <h4 data-property-id="merchant" data-type="1" class="my-1" style="float:left;width:90%">Cửa hàng</h4>
+                                            <div><i class="fa fa-angle-down" style=""></i></div>
+                                        </a>
                                         <div class="filter-text">
                                             
                                         </div>
                                         <div class="filter-list mCustomScrollbar _mCS_3" style="overflow: auto; ;">
                                             <div id="mCSB_3" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
                                                 <div id="mCSB_3_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
-                                                    <div class="control-group">
+                                                    <div class="control-group collapse" id="cuahang">
                                                   @foreach ($place as $p)
                                                             <label class="control control--checkbox custom-radio" data-value="1891">{{$p->place_name}}
-                                                                <span>(440)</span>
+                                                                <span></span>
                                                                 <input class="checkvalue place" type="checkbox" name="place" value="{{$p->id}}" data-value="{{$p->id}}}" data-name="{{$p->place_name}}">
                                                                 <div class="control__indicator"></div>
                                                             </label>
@@ -254,34 +263,37 @@
                                         </div>
                                     </div>
                                     <div class="filter-item">
-                                        <hr class="hr-filter">
-                                        <h4 data-property-id="price" data-type="7" class="my-1">Giá sản phẩm</h4>
-                                        <div class="filter-list">
+                                        <hr class="hr-filter" style="width:100%">
+                                        <a data-toggle="collapse" href="#giasanpham">
+                                           <h4 data-property-id="price" data-type="7" class="my-1" style="float:left;width:90%">Giá sản phẩm</h4>
+                                           <div><i class="fa fa-angle-down" style=""></i></div>
+                                        </a>
+                                        <div class="filter-list collapse" id="giasanpham">
                                             <div class="control-group">
                                                 
                                                     <label class="control control--radio custom-radio" data-value="1891">Dưới <strong>100K</strong>
-                                                        <span>(696)</span>
-                                                        <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
+                                                        <span></span>
+                                                        <input type="radio" name="price" data-value="120" data-name="Sản phẩm cho bé" value="1" class="checkvalue">
                                                         <div class="control__indicator"></div>
                                                     </label>
                                                     <label class="control control--radio custom-radio" data-value="1891">Từ <strong>100K</strong> - <strong>200K</strong>
-                                                        <span>(169)</span>
-                                                        <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
+                                                        <span></span>
+                                                        <input type="radio" name="price" data-value="120" data-name="Sản phẩm cho bé" value="2" class="checkvalue">
                                                         <div class="control__indicator"></div>
                                                     </label>
                                                     <label class="control control--radio custom-radio" data-value="1891">Từ <strong>200K</strong> - <strong>500K</strong>
-                                                        <span>(69)</span>
-                                                        <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
+                                                        <span></span>
+                                                        <input type="radio" name="price" data-value="120" data-name="Sản phẩm cho bé" value="3" class="checkvalue">
                                                         <div class="control__indicator"></div>
                                                     </label>
                                                     <label class="control control--radio custom-radio" data-value="1891">Từ <strong>500K</strong> - <strong>1 triệu</strong>
-                                                        <span>(6)</span>
-                                                        <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
+                                                        <span></span>
+                                                        <input type="radio" name="price" data-value="120" data-name="Sản phẩm cho bé" value="4" class="checkvalue">
                                                         <div class="control__indicator"></div>
                                                     </label>
                                                     <label class="control control--radio custom-radio" data-value="1891">Trên <strong>1 triệu</strong>
-                                                        <span>(9)</span>
-                                                        <input type="radio" name="cat" data-value="120" data-name="Sản phẩm cho bé">
+                                                        <span></span>
+                                                        <input type="radio" name="price" data-value="120" data-name="Sản phẩm cho bé" value="5" class="checkvalue">
                                                         <div class="control__indicator"></div>
                                                     </label>
                                                 
@@ -289,13 +301,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit">Lọc</button>
+                                {{-- <button type="submit">Lọc</button> --}}
                                 </form>
                                 <!-- /tags -->
                             </div>
                         </div>
                         <!-- /.col-lg-3 -->
-                        <div class="col-lg-10 "  id="filtersearch" >
+                        <div class="col-lg-10 col-md-9 "  id="filtersearch" >
                             <div class="row">
                                 @foreach($product as $value)
                                 @if($value->cost!=null)
@@ -380,6 +392,7 @@
         $(document).ready(function(){
             $('.checkvalue').change(function(){
                 // var pro = $('[name="pro"]:radio:checked').val();
+                var flag = '1';
                 var local = $('[name="local"]:radio:checked').val();
                 if(local ==null)
                     local ="flag";
@@ -389,10 +402,20 @@
                 var key = document.getElementById("key_search").value;
                 if(key=="")
                     key="flag";
-                $.get("ajax/filtersearch/"+key+"/"+local+"/"+place,function(data){
+                var price = $('[name="price"]:radio:checked').val();
+                if(price == null)
+                    price="flag";
+                if( $('[name="pro"]:radio:checked').val() !=null)
+                {
+                    key = $('[name="pro"]:radio:checked').val();
+                    flag ='2';
+
+                }
+
+                $.get("ajax/filtersearch/"+key+"/"+local+"/"+place+"/"+price+"/"+flag,function(data){
                     $('#filtersearch').html(data);                 
                 });
-                 $.get("ajax/searchresult/"+key+"/"+local+"/"+place,function(data){
+                 $.get("ajax/searchresult/"+key+"/"+local+"/"+place+"/"+price+"/"+flag,function(data){
                     $('.search-result').html(data);                 
                 });
             });
