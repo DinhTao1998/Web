@@ -95,7 +95,7 @@ class AjaxController extends Controller
     //                             }
         
     // }
-    public function filterSearch($key,$local,$place,$price,$flag){
+    public function filterSearch($key,$local,$place,$price,$flag,$sort){
         if($key=='flag')
             $key = '%';
         else
@@ -138,11 +138,30 @@ class AjaxController extends Controller
         }
         if($flag =='1')
         {
-            $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
+            if($sort=='2')
+                $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
+            else
+            {
+                if($sort =='3')
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->get();
+                else
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','asc')->get();
+            }
+
         }
         else
-            $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
-        echo "<div class='row'>";
+        {
+            if($sort =='2')
+                 $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
+            else
+            {
+                if($sort =='3')
+                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->get();
+                 else
+                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->get();
+            }
+        }
+        // echo "<div class='row'>";
          foreach($product as $pro)
          {
             if($pro->cost != null)
@@ -164,7 +183,7 @@ class AjaxController extends Controller
              </div>
              <div class='card-footer'>
              <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src' src='".$pro->place_image."'>
+             <img class='img-src' style='max-width:50px' src='".$pro->place_image."'>
              </div>
              </div>
              </div>";
@@ -187,7 +206,7 @@ class AjaxController extends Controller
              </div>
              <div class='card-footer'>
              <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src' src='".$pro->place_image."'>
+             <img class='img-src' style='max-width:50px' src='".$pro->place_image."'>
              </div>
              </div>
              </div>";

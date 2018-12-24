@@ -126,7 +126,7 @@
             </a>
           </div>
 
-          <div class="row">
+         {{--  <div class="row">
                         <div class="col-lg-2"></div>
                         <div class="col-lg-10 col-md-12">
                             <div class="list-wrap">
@@ -154,7 +154,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
           <div class="row">
             <div class="col-lg-2 col-md-3" style="margin-bottom: 30px">
@@ -333,8 +333,34 @@
                             </div>
                         </div>
                         <!-- /.col-lg-3 -->
-                        <div class="col-lg-10 col-md-9 "  id="filtersearch" >
-                            <div class="row">
+                        <div class="col-lg-10 col-md-9 " >
+                           <div class="row">
+                            <div class="list-wrap" style="width: 100%">
+                                <div class="list-header" style="height:auto">
+                                    <div class="search-result col-lg-4 col-md-4" style="width: 100%">
+                                        <span>Có <b>{{$count}}</b> sản phẩm</span>
+                                    </div>
+                                    <div class="search-action col-lg-8 col-md-8" style="width: 100%">
+                                        <div id="sortType">
+                                            {{-- <label class="control">Sắp xếp :</label> --}}
+                                            <label class="control control--radio"> Đáng quan tâm
+                                                <input  class="checkvalue" type="radio" name="sort" data-name="Đáng quan tâm" data-value="1" value="1">
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                            <label class="control control--radio"> Giá tiền tăng &nbsp;↑
+                                                <input class="checkvalue" type="radio" name="sort" data-name="Giá tiền tăng  ↑" data-value="2" value="2" checked>
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                            <label class="control control--radio"> Giá tiền giảm &nbsp;↓
+                                                <input class="checkvalue" type="radio" name="sort" data-name="Giá tiền giảm " data-value="3" value="3">
+                                                <div class="control__indicator"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="row" id="filtersearch">
                                 @foreach($product as $value)
                                 @if($value->cost!=null)
                                 <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4">
@@ -380,7 +406,7 @@
                                         </div>
                                                 <div class="card-footer">
                                             <small class="text-muted">{{$value -> location}}</small>
-                                            <img class="img-src" src="{{$value -> place_image}}">
+                                            <img class="img-src" style="max-width: 50px" src="{{$value -> place_image}}">
                                         </div>
                                         </div>
                                     </div>
@@ -388,7 +414,7 @@
                                     @endforeach
                                    
                                     </div>
-                                    <div class="row">{{ $product->appends(['key' => $key_search])->links() }}</div>
+                                    <div class="row link">{{ $product->appends(['key' => $key_search])->links() }}</div>
                                                                             </div>
           <!-- /.row -->
 
@@ -437,13 +463,15 @@
                     flag ='2';
 
                 }
+                var sort =$('[name="sort"]:radio:checked').val();
 
-                $.get("ajax/filtersearch/"+key+"/"+local+"/"+place+"/"+price+"/"+flag,function(data){
+                $.get("ajax/filtersearch/"+key+"/"+local+"/"+place+"/"+price+"/"+flag+"/"+sort,function(data){
                     $('#filtersearch').html(data);                 
                 });
                  $.get("ajax/searchresult/"+key+"/"+local+"/"+place+"/"+price+"/"+flag,function(data){
                     $('.search-result').html(data);                 
                 });
+                 $('.link').hide();
             });
 
         });

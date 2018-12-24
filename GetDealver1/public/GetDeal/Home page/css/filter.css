@@ -176,7 +176,7 @@ box-shadow: 0px 0px 1px 1px rgba(36,36,36,0.1);
 
 .list-wrap .list-header .search-result {
     float: left;
-    width: 45%
+    /* width: 45% */
 }
 
 .list-wrap .list-header .search-result p {
