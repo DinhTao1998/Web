@@ -164,7 +164,7 @@
                             <div class="filter-warp ">
                                 <div class="filter-inner">
                                     <div class="filter-item">
-                                        <div class="filter-text">
+                                       {{--  <div class="filter-text">
                                             
                                         </div>
                                         <div class="filter-list mCustomScrollbar _mCS_1 scrollbar-filter style-3" style="overflow: auto; height:auto;" >
@@ -192,7 +192,31 @@
                                                         <div class="mCSB_draggerRail"></div>
                                                     </div>
                                                 </div>
+                                            </div> --}}
+                                            <div class="filter-list mCustomScrollbar _mCS_2" style="overflow: auto;" >
+                                            <div id="mCSB_2" class="mCustomScrollBox mCS-dark mCSB_vertical mCSB_inside" style="max-height: none;" tabindex="0">
+                                                <div id="mCSB_2_container" class="mCSB_container" style="position:relative; top:0; left:0;" dir="ltr">
+                                                    <div class="control-group collapse"id="danhmucsanpham" >
+                                                       
+                                                           @foreach($product_type as $pt)
+                                                            <label class="control control--radio" data-value="1891">
+                                                                <input class="checkvalue pro" type="radio" name="pro" value="{{$pt->id}}" data-name="{{$pt->product_type_name}}">{{$pt->product_type_name}}
+                                                                <span></span>
+                                                                <div class="control__indicator"></div>
+                                                            </label>
+                                                            @endforeach
+                                                    </div>
+                                                </div>
+                                                <div id="mCSB_2_scrollbar_vertical" class="mCSB_scrollTools mCSB_2_scrollbar mCS-dark mCSB_scrollTools_vertical" style="display: block;">
+                                                    <div class="mCSB_draggerContainer">
+                                                        <div id="mCSB_2_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 30px; display: block; height: 51px; max-height: 228px; top: 0px;" oncontextmenu="return false;">
+                                                            <div class="mCSB_dragger_bar" style="line-height: 30px;"></div>
+                                                        </div>
+                                                        <div class="mCSB_draggerRail"></div>
+                                                    </div>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                     <div class="filter-item">
