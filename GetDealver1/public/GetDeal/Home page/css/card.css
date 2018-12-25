@@ -22,6 +22,7 @@ h4 a:hover{
 
 .card-img{
     height: 211.75px;
+    z-index: 1;
 }
 
 .card-title{
@@ -62,20 +63,19 @@ h4 a:hover{
 }
 
 .img-src{
-    height: 25px;
-    margin-left: 30px !important;
+    height: 26px;
     float: right;
 }
 
 .card{
-    border-radius: .60rem;
+    border-radius: .75rem !important;
 }
 
 .card-img-top {
     width: 100%;
-    border-top-left-radius: calc(.60rem - 1px);
-    border-top-right-radius: calc(.60rem - 1px);
-    height: 211.75px;
+    border-top-left-radius: calc(.75rem - 1px) !important;
+    border-top-right-radius: calc(.75rem - 1px) !important;
+    height: 211.75px !important;
 }
 
 .card:hover{
@@ -130,3 +130,36 @@ h4 a:hover{
     background-color: green;
 }
 
+.card-footer {
+    padding: 10px 12px !important;
+    background-color: rgba(0, 0, 0, .03) !important;
+    border-top: 1px solid rgba(0, 0, 0, .125) !important;
+}
+
+.card-title {
+    margin-bottom: 0rem !important;
+}
+
+span{
+    color: #333;
+    font-size: 14px;
+}
+
+.flash-sale{
+    background-color: #FF5722;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    margin-right: 5px;
+    border-radius: 0.57rem;
+    padding: 2px 10px 2px 10px;
+    max-width: 100px;
+    float: left;
+    margin-bottom: 0px;
+}
+
+.flash-sale-div{
+    float: left;
+    z-index: 2;
+    position: absolute;
+}

@@ -167,7 +167,7 @@ class AjaxController extends Controller
             if($pro->cost != null)
              echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
-             <div class='card h-100'>
+             <div class='card h-100 grow'>
              <a href='".$pro->link."'>
              <div class='card-img' style='height: 211.75px;'>
              <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
@@ -183,14 +183,14 @@ class AjaxController extends Controller
              </div>
              <div class='card-footer'>
              <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src' style='max-width:50px' src='".$pro->place_image."'>
+             <img class='img-src'  src='".$pro->place_image."'>
              </div>
              </div>
              </div>";
              else
                 echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
-             <div class='card h-100'>
+             <div class='card h-100 grow'>
              <a href='".$pro->link."'>
              <div class='card-img' style='height: 211.75px;'>
              <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
@@ -206,7 +206,7 @@ class AjaxController extends Controller
              </div>
              <div class='card-footer'>
              <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src' style='max-width:50px' src='".$pro->place_image."'>
+             <img class='img-src'  src='".$pro->place_image."'>
              </div>
              </div>
              </div>";

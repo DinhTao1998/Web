@@ -157,11 +157,11 @@
                     </div> --}}
 
           <div class="row">
-            <div class="col-lg-2 col-md-3" style="margin-bottom: 30px">
+            <div class="col-lg-2 col-md-3" style="margin-bottom: 30px; margin-top: 30px">
                 <form action="{{route ('search1')}}" method="get">       
                             <a data-toggle = "collapse" href="#danhmucsanpham">               
                                <h4 class="my-1" style="float:left;width:90%">Danh mục</h4>
-                               <div><i class="fa fa-angle-down" style=""></i></div>
+                               <div class="filter-down"><i class="fa fa-angle-down" style=""></i></div>
                             </a>
                             <div class="filter-warp ">
                                 <div class="filter-inner">
@@ -338,7 +338,7 @@
                             <div class="list-wrap" style="width: 100%">
                                 <div class="list-header" style="height:auto">
                                     <div class="search-result col-lg-4 col-md-4" style="width: 100%">
-                                        <span>Có <b>{{$count}}</b> sản phẩm</span>
+                                        <span>Có <b>{{$count}}</b> sản phẩm được tìm thấy</span>
                                     </div>
                                     <div class="search-action col-lg-8 col-md-8" style="width: 100%">
                                         <div id="sortType">
@@ -367,13 +367,17 @@
                                   
                                     <div class="card h-100 grow">
                                       <a href="{{$value -> link}}">
+
+                                        {{-- <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div> --}}
                                         <div class="card-img" style="height: 211.75px;">
+                                          
                                             <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
                                         </div>
                                         
                                         <div class="card-body">
-                                            {{-- <div class="sale-tag-red">FLASH SALE</div> --}}
+
                                             <h4 class="card-title">
+
                                                 <a href="{{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
                                             <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{number_format($value ->cost)}}đ</span><span class="sale-tag">-{{$value ->sale}}</span>
@@ -381,7 +385,7 @@
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{$value -> location}}</small>
-                                            <img class="img-src" style="max-width: 50px" src="{{$value -> place_image}}">
+                                            <img class="img-src" src="{{$value -> place_image}}">
                                         </div>
                                         </div>
                                     </div>
@@ -391,6 +395,7 @@
                                   
                                     <div class="card h-100 grow">
                                       <a href="{{$value -> link}}">
+                                        {{-- <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div> --}}
                                         <div class="card-img" style="height: 211.75px;">
                                             <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
                                         </div>
@@ -406,7 +411,7 @@
                                         </div>
                                                 <div class="card-footer">
                                             <small class="text-muted">{{$value -> location}}</small>
-                                            <img class="img-src" style="max-width: 50px" src="{{$value -> place_image}}">
+                                            <img class="img-src" src="{{$value -> place_image}}">
                                         </div>
                                         </div>
                                     </div>
