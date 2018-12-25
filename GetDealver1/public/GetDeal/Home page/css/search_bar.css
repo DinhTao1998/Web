@@ -20,3 +20,20 @@
 	border-radius: 30px;
 	font-size: 20px;
 }
+@media screen and (max-width: 992px) {
+  .btn_search {
+    margin-left:12% !important;
+  }
+  @media screen and (max-width: 770px) {
+  .btn_search {
+    margin-left:10% !important;
+  }
+   @media screen and (max-width: 770px) {
+  .btn_search {
+    margin-left:7% !important;
+  }
+     @media screen and (max-width: 550px) {
+  .btn_search {
+    margin-left:0% !important;
+  }
+}

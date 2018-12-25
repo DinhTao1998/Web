@@ -19,22 +19,22 @@
 
     <link rel="stylesheet" href="GetDeal/jobfinder/css/style.css">
      <div class="site-wrap">
-
-    <div class="site-mobile-menu">
+{{-- 
+    <div class="site-mobile-menu" style="width: 100%">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close mt-3">
           <span class="icon-close2 js-menu-toggle"></span>
         </div>
       </div>
       <div class="site-mobile-menu-body"></div>
-    </div> <!-- .site-mobile-menu -->
-  <div class="site-navbar-wrap js-site-navbar bg-white" style="top:0; margin-top: 0; padding-top: 0;padding-bottom: 0; margin-bottom: 0">
+    </div> --}} <!-- .site-mobile-menu -->
+ {{--  <div class="site-navbar-wrap js-site-navbar bg-white" style="top:0; margin-top: 0; padding-top: 0;padding-bottom: 0; margin-bottom: 0">
       
       <div class="container">
         <div class="site-navbar bg-light">
           <div class="py-1">
             <div class="row align-items-center">
-              <div class="col-lg-2 col-md-3 col-md-3">
+              <div class="">
                 <img src="GetDeal/jobfinder/images/logo.png" style="max-height: 50px; max-width: 150px">
 
               </div>
@@ -46,12 +46,88 @@
                 </div>
               </form>
             </div>
-              <div class="col-lg-6 col-md-1 col-sm-2" style="">
+              <div class="" style="">
                 <nav class="site-navigation text-right" role="navigation">
                   <div class="container">
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
+                        <form action="{{route('search')}}" method="get" accept-charset="utf-8" role="search" style="width:300px" >
+                          <div class="search_bar" focus="none" >
+                            <input class ="search" placeholder="Tìm kiếm sản phẩm..." type="search" name="key" focus="none" autofocus="true" value="{{$key_search}}" id="key_search">
+                            <button class="btn_search" type="submit"><i class="fa fa-search"></i></button>
+                          </div>
+                        </form>
+                      </li>
+                      <li><a href="categories.html">Trang chủ</a></li>
+                      <li class="has-children">
+                        <a href="categories.html">Danh mục</a>
+                        <ul class="dropdown arrow-top">
+                          <li><a href="categories.html">Category</a></li>
+                          <li><a href="#">Browse Candidates</a></li>
+                          <li><a href="new-post.html">Post a Job</a></li>
+                          <li><a href="#">Employeer Profile</a></li>
+                          <li class="has-children">
+                            <a href="#">More Links</a>
+                            <ul class="dropdown">
+                              <li><a href="#">Browse Candidates</a></li>
+                              <li><a href="#">Post a Job</a></li>
+                              <li><a href="#">Employeer Profile</a></li>
+                            </ul>
+                          </li>
+
+                        </ul>
+                      </li>
+                      <li><a href="contact.html">Giới thiệu</a></li>
+                      <li><a href="contact.html">Liên hệ</a></li>
+                      
+                    </ul>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> --}}
+    <div {{-- class="site-wrap" --}}>
+
+    <div class="site-mobile-menu" style="width:100%">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
                     <ul class="site-menu js-clone-nav d-none d-lg-block">
+                      <li>      
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div> <!-- .site-mobile-menu -->
+    
+    
+    <div class="site-navbar-wrap js-site-navbar bg-white" style="top:0; margin-top: 0; padding-top: 0;padding-bottom: 0">
+      
+      <div class="container">
+        <div class="site-navbar bg-light">
+          <div class="py-1">
+            <div class="row align-items-center">
+              <div class="col-2">
+                <img src="GetDeal/jobfinder/images/logo.png">
+
+              </div>
+              <div class="col-10">
+                <nav class="site-navigation text-right" role="navigation">
+                  <div class="container">
+                    <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+
+
+                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                      <li>
+                        <form action="{{route('search')}}" method="get" accept-charset="utf-8" role="search" style>
+                          <div class="search_bar" focus="none" >
+                            <input class ="search" placeholder="Tìm kiếm sản phẩm..." type="search" name="key" focus="none" autofocus="true" value="{{$key_search}}" id="key_search">
+                            <button class="btn_search" type="submit"><i class="fa fa-search"></i></button>
+                          </div>
+                        </form>
+                      </li>
                       <li><a href="categories.html">Trang chủ</a></li>
                       <li class="has-children">
                         <a href="categories.html">Danh mục</a>
