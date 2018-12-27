@@ -103,25 +103,33 @@
     </div> <!-- .site-mobile-menu -->
     
     
-    <div class="site-navbar-wrap js-site-navbar bg-white" style="top:0; margin-top: 0; padding-top: 0;padding-bottom: 0">
+    <div class="site-navbar-wrap js-site-navbar bg-white header-bg-color" style="top:0; margin-top: 0; padding-top: 0;padding-bottom: 0">
       
       <div class="container">
-        <div class="site-navbar bg-light">
+        <div class="site-navbar bg-light header-trans">
           <div class="py-1">
             <div class="row align-items-center">
               <div class="col-2">
-                <img src="GetDeal/jobfinder/images/logo.png">
+                <img src="GetDeal/jobfinder/images/logo.png" style="max-height: 50px;max-width: 150px">
 
               </div>
-              <div class="col-10">
+              <div class="col-4" style="padding-left: 30px; padding-right: 0px">
+                <form action="{{route('search')}}" method="get" accept-charset="utf-8" role="search" style>
+                          <div class="search_bar barhide" focus="none" style="display:block">
+                            <input class ="search" placeholder="Tìm kiếm sản phẩm..." type="search" name="key" focus="none" autofocus="true" value="{{$key_search}}" id="key_search">
+                            <button class="btn_search" type="submit"><i class="fa fa-search"></i></button>
+                          </div>
+                        </form>
+              </div>
+              <div class="col-6" style="margin-right:0px; margin-left:0px; padding-left: 0px;">
                 <nav class="site-navigation text-right" role="navigation">
-                  <div class="container">
+                  <div class="container" style="padding-left: 0px">
                     <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
 
 
-                    <ul class="site-menu js-clone-nav d-none d-lg-block">
+                    <ul class="site-menu js-clone-nav d-none d-lg-block" style="padding-left: 0px;">
                       <li>
-                        <form action="{{route('search')}}" method="get" accept-charset="utf-8" role="search" style>
+                        <form action="{{route('search')}}" method="get" accept-charset="utf-8" role="search">
                           <div class="search_bar" focus="none" >
                             <input class ="search" placeholder="Tìm kiếm sản phẩm..." type="search" name="key" focus="none" autofocus="true" value="{{$key_search}}" id="key_search">
                             <button class="btn_search" type="submit"><i class="fa fa-search"></i></button>

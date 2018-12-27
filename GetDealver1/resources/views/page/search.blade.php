@@ -363,7 +363,7 @@
                             <div class="row" id="filtersearch">
                                 @foreach($product as $value)
                                 @if($value->cost!=null)
-                                <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4">
+                                <div class="col-lg-3 col-md-6 col-xs-12 col-sm-6 mb-4">
                                   
                                     <div class="card h-100 grow">
                                       <a href="{{$value -> link}}">
@@ -391,7 +391,7 @@
                                     </div>
                                    
                                     @else
-                                    <div class="col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4">
+                                    <div class="col-lg-3 col-md-6 col-xs-12 col-sm-6 mb-4">
                                   
                                     <div class="card h-100 grow">
                                       <a href="{{$value -> link}}">

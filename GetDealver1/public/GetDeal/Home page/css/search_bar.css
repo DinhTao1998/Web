@@ -24,16 +24,27 @@
   .btn_search {
     margin-left:12% !important;
   }
+}
   @media screen and (max-width: 770px) {
   .btn_search {
     margin-left:10% !important;
-  }
+  }}
    @media screen and (max-width: 770px) {
   .btn_search {
     margin-left:7% !important;
-  }
+  }}
      @media screen and (max-width: 550px) {
   .btn_search {
     margin-left:0% !important;
+  }
+}
+@media screen and (min-width: 992px) {
+  .search_bar {
+    display:none;
+  }
+}
+@media screen and (max-width: 992px) {
+  .barhide {
+    display:none !important;
   }
 }
