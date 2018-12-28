@@ -168,7 +168,7 @@ class AjaxController extends Controller
              echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
              <div class='card h-100 grow'>
-             <a href='".$pro->link."'>
+             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
              <div class='card-img' style='height: 211.75px;'>
              <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
              </div>
@@ -176,7 +176,7 @@ class AjaxController extends Controller
              <div class='card-body'>
 
              <h4 class='card-title'>
-             <a href='".$pro->link."' >".$pro->product_name."</a>
+             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
              </h4>
              <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".number_format((float)$pro->cost)."đ</span><span class='sale-tag'>-".$pro->sale."</span>
              <p class='card-text'></p>
@@ -191,7 +191,7 @@ class AjaxController extends Controller
                 echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
              <div class='card h-100 grow'>
-             <a href='".$pro->link."'>
+             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
              <div class='card-img' style='height: 211.75px;'>
              <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
              </div>
@@ -199,7 +199,7 @@ class AjaxController extends Controller
              <div class='card-body'>
 
              <h4 class='card-title'>
-             <a href='".$pro->link."' >".$pro->product_name."</a>
+             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
              </h4>
              <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".$pro->cost."</span><span class='sale-tag'>".$pro->sale."</span>
              <p class='card-text'></p>
@@ -261,4 +261,6 @@ class AjaxController extends Controller
         
     }
 }
+
+
 ?>
