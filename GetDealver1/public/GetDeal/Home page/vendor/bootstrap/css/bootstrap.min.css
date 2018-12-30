@@ -340,10 +340,10 @@ progress {
 [type=number]::-webkit-outer-spin-button {
     height: auto
 }
-
-[type=search] {
-    outline-offset: -2px;
-    -webkit-appearance: none
+/* Remove outline*/
+[type=search]:focus {
+    outline: none;
+    background-color: #fff;
 }
 
 [type=search]::-webkit-search-cancel-button,
