@@ -427,17 +427,10 @@
                                     </div>
                                     @endif
                                     @endforeach
-                                   
                                     </div>
-<<<<<<< HEAD
                                     <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{{ $product->appends(['key' => $key_search])->links() }}</div>
                                 </div>
-=======
-                                    <div class="row link">{{ $product->appends(['key' => $key_search])->links() }}</div>
-                                                                            </div>
                                     <button id="button"  class="row" type="button" style="margin-left: auto; margin-right: auto;margin-bottom: 20px;display:none">Tải thêm</button>
-                                
->>>>>>> b9b8e9b6f47b2a3c51decb4fa8b24cbb55ab9eea
           <!-- /.row -->
 
         </div>
@@ -462,7 +455,10 @@
     <!-- Bootstrap core JavaScript -->
     <script src="GetDeal/Home page/vendor/jquery/jquery.min.js"></script>
     <script src="GetDeal/Home page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="GetDeal/Home page/js/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="GetDeal/Home page/js/main.js"></script>
+       <script type="text/javascript">
         $(document).ready(function(){
             $('.checkvalue').change(function(){
                 // var pro = $('[name="pro"]:radio:checked').val();
@@ -484,10 +480,8 @@
                 {
                     key = $('[name="pro"]:radio:checked').val();
                     flag ='2';
-
                 }
                 var sort =$('[name="sort"]:radio:checked').val();
-
                 $.get("ajax/filtersearch/"+key+"/"+local+"/"+place+"/"+price+"/"+flag+"/"+sort,function(data){
                     $('#filtersearch').html(data);                 
                 });
@@ -496,16 +490,7 @@
                 });
                  // $('.link').hide();
             });
-
-
         });
-<<<<<<< HEAD
-    </script>
-  
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="GetDeal/Home page/js/jquery-1.9.1.min.js"><\/script>')</script>
-  <script src="GetDeal/Home page/js/main.js"></script>
-=======
         $('#button').click(function(){
           var a= $('.pagination li.active + li a').attr('href');
           alert(a);
@@ -525,9 +510,7 @@
            }
           
             });
-
     </script>
->>>>>>> b9b8e9b6f47b2a3c51decb4fa8b24cbb55ab9eea
   </body>
   
 
