@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Shop Homepage - Start Bootstrap Template</title>
+    <title>GetDeal - Tìm kiếm sản phẩm</title>
 
     <!-- Bootstrap core CSS -->
     <link href="GetDeal/Home page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,15 +20,25 @@
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/gird.css">
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/card.css">
     <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/filter.css">
+    <link rel="stylesheet" type="text/css" href="GetDeal/Home page/css/loading.css">
     <link rel="stylesheet" href="GetDeal/Home page/css/search_bar.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> --}}
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    
+    <script src="GetDeal/Home page/js/modernizr-2.6.2.min.js"></script>
 
   </head>
 
   <body>
+    <div id="demo-content">
+
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+
+      <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+    </div>
 
     <!-- Navigation -->
     {{-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="padding-top: 6px;padding-bottom: 5.25px ;background-color: darkslateblue !important;
@@ -418,8 +428,8 @@
                                     @endforeach
                                    
                                     </div>
-                                    <div class="row link">{{ $product->appends(['key' => $key_search])->links() }}</div>
-                                                                            </div>
+                                    <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{{ $product->appends(['key' => $key_search])->links() }}</div>
+                                </div>
           <!-- /.row -->
 
         </div>
@@ -480,7 +490,10 @@
 
         });
     </script>
-
+  
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="GetDeal/Home page/js/jquery-1.9.1.min.js"><\/script>')</script>
+  <script src="GetDeal/Home page/js/main.js"></script>
   </body>
   
 
