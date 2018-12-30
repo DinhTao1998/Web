@@ -113,7 +113,17 @@
             Bảng dữ liệu</div>
             <div class="card-body">
               <div class="table-responsive">
+               <?php
+                  $sotin1trang=15;
+                  if(isset($_GET["trang"])){
+                  $trang=$_GET["trang"];
+                  settype($trang, "int");
+                }else {
+                  $trang=1;
+                }
+                 ?>
                 <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
+                  
                   <thead>
                     <tr>
                       <th>ID</th>
@@ -128,8 +138,9 @@
                   <tbody>
                     <?php
                     require "connect.php";
-                    $sql="select * from product";
-                    $query=mysqli_query($con,$sql);
+                    $from=($trang-1)*$sotin1trang;
+                    $sql="select * from product LIMIT $from,$sotin1trang";
+                    $query=mysqli_query($con,$sql);                    
                     while($row=mysqli_fetch_array($query)){
                     ?>
                         <tr>
@@ -139,13 +150,22 @@
                           <td><?php echo $row['price']?></td>     
                           <td><?php echo $row['cost']?></td>
                           <td><?php echo $row['sale']?></td> 
-                          <td><?php echo $row['location']?></td>                  
+                          <td><?php echo $row['location']?></td>  
+                        </tr>                
                         </tbody> 
                       <?php } ?>
                       </table>
+                       <?php
+                      $x=mysqli_query($con,"select id from product");
+                      $tongsotin=mysqli_num_rows($x);
+                      $sotrang=ceil($tongsotin/$sotin1trang);
+                      for($t=1;$t<=$sotrang;$t++){
+                        echo "
+                        <a href='table.php?trang=$t'>$t</a>-";
+                    }
+                    ?>
+
                     </div>
-                  </div>
-                  <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
                 </div>
             <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
           </div>
@@ -176,21 +196,21 @@
 
           <!-- Bootstrap core JavaScript-->
           <script src="vendor/jquery/jquery.min.js"></script>
-          <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-          <!-- Core plugin JavaScript-->
+          <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+          
+          <!-- Core plugin JavaScript -->
           <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
           <!-- Page level plugin JavaScript-->
           <script src="vendor/chart.js/Chart.min.js"></script>
           <script src="vendor/datatables/jquery.dataTables.js"></script>
-          <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+          <!-- script src="vendor/datatables/dataTables.bootstrap4.js"></script> -->
 
           <!-- Custom scripts for all pages-->
           <script src="js/sb-admin.min.js"></script>
 
           <!-- Demo scripts for this page-->
-          <script src="js/demo/datatables-demo.js"></script>
+          <!-- <script src="js/demo/datatables-demo.js"></script> -->
           <script src="js/demo/chart-area-demo.js"></script>
 
         </body>
