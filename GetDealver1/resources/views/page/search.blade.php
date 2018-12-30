@@ -360,7 +360,8 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="row" id="filtersearch">
+                        <div id="filtersearch">
+                            <div class="row" >
                                 @foreach($product as $value)
                                 @if($value->cost!=null)
                                 <div class="col-lg-3 col-md-6 col-xs-12 col-sm-6 mb-4">
@@ -405,7 +406,7 @@
                                             <h4 class="card-title">
                                                 <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
-                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}</span><span class="sale-tag">{{$value ->sale}}</span>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{-- {{$value ->cost}} --}}</span><span class="sale-tag">{{-- {{$value ->sale}} --}}</span>
                                             <p class="card-text"></p>
                                         </div>
                                                 <div class="card-footer">
@@ -420,6 +421,8 @@
                                     </div>
                                     <div class="row link">{{ $product->appends(['key' => $key_search])->links() }}</div>
                                                                             </div>
+                                    <button id="button"  class="row" type="button" style="margin-left: auto; margin-right: auto;margin-bottom: 20px;display:none">Tải thêm</button>
+                                
           <!-- /.row -->
 
         </div>
@@ -448,6 +451,7 @@
         $(document).ready(function(){
             $('.checkvalue').change(function(){
                 // var pro = $('[name="pro"]:radio:checked').val();
+                document.getElementById("button").style.display = "block";
                 var flag = '1';
                 var local = $('[name="local"]:radio:checked').val();
                 if(local ==null)
@@ -475,12 +479,32 @@
                  $.get("ajax/searchresult/"+key+"/"+local+"/"+place+"/"+price+"/"+flag,function(data){
                     $('.search-result').html(data);                 
                 });
-                 $('.link').hide();
+                 // $('.link').hide();
             });
 
-        });
-    </script>
 
+        });
+        $('#button').click(function(){
+          var a= $('.pagination li.active + li a').attr('href');
+          alert(a);
+          if(a!='undefined')
+          {
+          $.get(a,function(data){
+            document.getElementById('filtersearch').innerHTML += data;
+          });
+          
+          $('ul.pagination').remove();
+          $('ul.pagination').hide();
+           }
+           else
+           {
+            alert('Hết sản phẩm');
+             document.getElementByI('button').style.display = "none";
+           }
+          
+            });
+
+    </script>
   </body>
   
 
