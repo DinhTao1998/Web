@@ -139,29 +139,29 @@ class AjaxController extends Controller
         if($flag =='1')
         {
             if($sort=='2')
-                $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
+                $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
             else
             {
                 if($sort =='3')
-                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->get();
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
                 else
-                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->get();
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
             }
 
         }
         else
         {
             if($sort =='2')
-                 $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->get();
+                 $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
             else
             {
                 if($sort =='3')
-                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->get();
+                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
                  else
-                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->get();
+                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
             }
         }
-        // echo "<div class='row'>";
+        echo "<div class='row'>";
          foreach($product as $pro)
          {
             if($pro->cost != null)
@@ -178,7 +178,7 @@ class AjaxController extends Controller
              <h4 class='card-title'>
              <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
              </h4>
-             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".number_format((float)$pro->cost)."đ</span><span class='sale-tag'>-".$pro->sale."</span>
+             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".number_format((float)$pro->cost)."đ</span><span class='sale-tag'>-".$pro->sale."%</span>
              <p class='card-text'></p>
              </div>
              <div class='card-footer'>
@@ -201,7 +201,7 @@ class AjaxController extends Controller
              <h4 class='card-title'>
              <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
              </h4>
-             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".$pro->cost."</span><span class='sale-tag'>".$pro->sale."</span>
+             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".$pro->cost."</span><span class='sale-tag'></span>
              <p class='card-text'></p>
              </div>
              <div class='card-footer'>
@@ -211,6 +211,11 @@ class AjaxController extends Controller
              </div>
              </div>";
         }
+        echo "</div>
+                                    <div class='row link' style='display:none'>".$product->links()."</div>
+                                                                            </div>";
+        // echo "</div>
+        //                             <button id='button' class='row' type='button' style='margin:0 auto'>Tải thêm</button>";
     }
      public function searchResult($key,$local,$place,$price,$flag){
         if($key=='flag')

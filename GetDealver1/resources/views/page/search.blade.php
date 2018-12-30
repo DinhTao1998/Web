@@ -370,7 +370,8 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="row" id="filtersearch">
+                        <div id="filtersearch">
+                            <div class="row" >
                                 @foreach($product as $value)
                                 @if($value->cost!=null)
                                 <div class="col-lg-3 col-md-6 col-xs-12 col-sm-6 mb-4">
@@ -390,7 +391,7 @@
 
                                                 <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
-                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{number_format($value ->cost)}}đ</span><span class="sale-tag">-{{$value ->sale}}</span>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}đ</span><span class="sale-tag">-{{$value ->sale}}%</span>
                                             <p class="card-text"></p>
                                         </div>
                                         <div class="card-footer">
@@ -415,7 +416,7 @@
                                             <h4 class="card-title">
                                                 <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
-                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}</span><span class="sale-tag">{{$value ->sale}}</span>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{-- {{$value ->cost}} --}}</span><span class="sale-tag">{{-- {{$value ->sale}} --}}</span>
                                             <p class="card-text"></p>
                                         </div>
                                                 <div class="card-footer">
@@ -428,8 +429,15 @@
                                     @endforeach
                                    
                                     </div>
+<<<<<<< HEAD
                                     <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{{ $product->appends(['key' => $key_search])->links() }}</div>
                                 </div>
+=======
+                                    <div class="row link">{{ $product->appends(['key' => $key_search])->links() }}</div>
+                                                                            </div>
+                                    <button id="button"  class="row" type="button" style="margin-left: auto; margin-right: auto;margin-bottom: 20px;display:none">Tải thêm</button>
+                                
+>>>>>>> b9b8e9b6f47b2a3c51decb4fa8b24cbb55ab9eea
           <!-- /.row -->
 
         </div>
@@ -458,6 +466,7 @@
         $(document).ready(function(){
             $('.checkvalue').change(function(){
                 // var pro = $('[name="pro"]:radio:checked').val();
+                document.getElementById("button").style.display = "block";
                 var flag = '1';
                 var local = $('[name="local"]:radio:checked').val();
                 if(local ==null)
@@ -485,15 +494,40 @@
                  $.get("ajax/searchresult/"+key+"/"+local+"/"+place+"/"+price+"/"+flag,function(data){
                     $('.search-result').html(data);                 
                 });
-                 $('.link').hide();
+                 // $('.link').hide();
             });
 
+
         });
+<<<<<<< HEAD
     </script>
   
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>window.jQuery || document.write('<script src="GetDeal/Home page/js/jquery-1.9.1.min.js"><\/script>')</script>
   <script src="GetDeal/Home page/js/main.js"></script>
+=======
+        $('#button').click(function(){
+          var a= $('.pagination li.active + li a').attr('href');
+          alert(a);
+          if(a!='undefined')
+          {
+          $.get(a,function(data){
+            document.getElementById('filtersearch').innerHTML += data;
+          });
+          
+          $('ul.pagination').remove();
+          $('ul.pagination').hide();
+           }
+           else
+           {
+            alert('Hết sản phẩm');
+             document.getElementByI('button').style.display = "none";
+           }
+          
+            });
+
+    </script>
+>>>>>>> b9b8e9b6f47b2a3c51decb4fa8b24cbb55ab9eea
   </body>
   
 

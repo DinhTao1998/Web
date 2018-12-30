@@ -25,9 +25,10 @@ class GetDealController extends Controller
     }
     public function getSearch(request $req){
         $key_search = $req->key;
+        if(strpos($req->key, ' ')!==false)
         $req->key = str_replace(" ", '%',$req->key);
              # code...
-        $product = Product::where('product_name','like','%'.$req->key.'%')->orderBy('price','asc')->take(100)->paginate(20);
+        $product = Product::where('product_name','like','%'.$req->key.'%')->orderBy('price','asc')->take(100)->paginate(40);
         $count = sizeof( Product::where('product_name','like','%'.$req->key.'%')->orderBy('price','asc')->get());
         $product_type = ProductType::all();
         $pr_location = Product::select('location')->distinct()->get();
