@@ -107,112 +107,112 @@
           </ol>
 
           <!-- DataTables Example -->
-           <div class="card mb-3">
+          <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
             Bảng dữ liệu</div>
             <div class="card-body">
               <div class="table-responsive">
                <?php
-                  $sotin1trang=15;
-                  if(isset($_GET["trang"])){
-                  $trang=$_GET["trang"];
-                  settype($trang, "int");
-                }else {
-                  $trang=1;
-                }
-                 ?>
-                <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
-                  
-                  <thead>
+               $sotin1trang=15;
+               if(isset($_GET["trang"])){
+                $trang=$_GET["trang"];
+                settype($trang, "int");
+              }else {
+                $trang=1;
+              }
+              ?>
+              <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
+                
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Product Name</th>
+                    <th>Link Product</th>
+                    <th>Price</th>
+                    <th>Cost</th>
+                    <th>Sale</th>
+                    <th>Location</th>                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  require "connect.php";
+                  $from=($trang-1)*$sotin1trang;
+                  $sql="select * from product LIMIT $from,$sotin1trang";
+                  $query=mysqli_query($con,$sql);                    
+                  while($row=mysqli_fetch_array($query)){
+                    ?>
                     <tr>
-                      <th>ID</th>
-                      <th>Product Name</th>
-                      <th>Link Product</th>
-                      <th>Price</th>
-                      <th>Cost</th>
-                      <th>Sale</th>
-                      <th>Location</th>                    
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                    require "connect.php";
-                    $from=($trang-1)*$sotin1trang;
-                    $sql="select * from product LIMIT $from,$sotin1trang";
-                    $query=mysqli_query($con,$sql);                    
-                    while($row=mysqli_fetch_array($query)){
-                    ?>
-                        <tr>
-                          <td><?php echo $row['id']?></td>
-                          <td><?php echo $row['product_name']?></td>
-                          <td><?php echo $row['link']?></td>
-                          <td><?php echo $row['price']?></td>     
-                          <td><?php echo $row['cost']?></td>
-                          <td><?php echo $row['sale']?></td> 
-                          <td><?php echo $row['location']?></td>  
-                        </tr>                
-                        </tbody> 
-                      <?php } ?>
-                      </table>
-                       <?php
-                      $x=mysqli_query($con,"select id from product");
-                      $tongsotin=mysqli_num_rows($x);
-                      $sotrang=ceil($tongsotin/$sotin1trang);
-                      for($t=1;$t<=$sotrang;$t++){
-                        echo "
-                        <a href='table.php?trang=$t'>$t</a>-";
-                    }
-                    ?>
+                      <td><?php echo $row['id']?></td>
+                      <td><?php echo $row['product_name']?></td>
+                      <td><?php echo $row['link']?></td>
+                      <td><?php echo $row['price']?></td>     
+                      <td><?php echo $row['cost']?></td>
+                      <td><?php echo $row['sale']?></td> 
+                      <td><?php echo $row['location']?></td>  
+                    </tr>                
+                  </tbody> 
+                <?php } ?>
+              </table>
+              <?php
+              $x=mysqli_query($con,"select id from product");
+              $tongsotin=mysqli_num_rows($x);
+              $sotrang=ceil($tongsotin/$sotin1trang);
+              for($t=1;$t<=$sotrang;$t++){
+                echo "
+                <a href='table.php?trang=$t'>$t</a>-";
+              }
+              ?>
 
-                    </div>
-                </div>
-            <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
+            </div>
           </div>
+          <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
+        </div>
 
-          <!-- Scroll to Top Button-->
-          <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-          </a>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
 
-          <!-- Logout Modal-->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Đăng xuất?</h5>
-                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div class="modal-body">Chọn "Đăng xuất" để kết thúc phiên hoạt động</div>
-                <div class="modal-footer">
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                  <a class="btn btn-primary" href="login.html">Đăng Xuất</a>
-                </div>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đăng xuất?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Chọn "Đăng xuất" để kết thúc phiên hoạt động</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-primary" href="login.html">Đăng Xuất</a>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Bootstrap core JavaScript-->
-          <script src="vendor/jquery/jquery.min.js"></script>
-          <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
-          
-          <!-- Core plugin JavaScript -->
-          <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <!-- <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
+        
+        <!-- Core plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-          <!-- Page level plugin JavaScript-->
-          <script src="vendor/chart.js/Chart.min.js"></script>
-          <script src="vendor/datatables/jquery.dataTables.js"></script>
-          <!-- script src="vendor/datatables/dataTables.bootstrap4.js"></script> -->
+        <!-- Page level plugin JavaScript-->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <!-- script src="vendor/datatables/dataTables.bootstrap4.js"></script> -->
 
-          <!-- Custom scripts for all pages-->
-          <script src="js/sb-admin.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
 
-          <!-- Demo scripts for this page-->
-          <!-- <script src="js/demo/datatables-demo.js"></script> -->
-          <script src="js/demo/chart-area-demo.js"></script>
+        <!-- Demo scripts for this page-->
+        <!-- <script src="js/demo/datatables-demo.js"></script> -->
+        <script src="js/demo/chart-area-demo.js"></script>
 
-        </body>
+      </body>
 
-        </html>
+      </html>
