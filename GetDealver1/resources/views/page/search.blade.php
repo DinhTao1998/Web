@@ -486,8 +486,7 @@
         });
         $('#button').click(function(){
           var a= $('.pagination li.active + li a').attr('href');
-          alert(a);
-          if(a!='undefined')
+          if(a)
           {
           $.get(a,function(data){
             document.getElementById('filtersearch').innerHTML += data;
@@ -499,7 +498,8 @@
            else
            {
             alert('Hết sản phẩm');
-             document.getElementByI('button').style.display = "none";
+             // document.getElementByI('button').style.display = "none";
+             $('#button').hide();
            }
           
             });
