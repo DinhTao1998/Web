@@ -428,9 +428,9 @@
                                     @endif
                                     @endforeach
                                     </div>
-                                    <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{{ $product->appends(['key' => $key_search])->links() }}</div>
+                                    <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{!!$product->appends(['key' => $key_search])->links() !!}</div>
                                 </div>
-                                    <button id="button"  class="row" type="button" style="margin-left: auto; margin-right: auto;margin-bottom: 20px;display:none">Tải thêm</button>
+                                    {{-- <button id="button"  class="row" type="button" style="margin-left: auto; margin-right: auto;margin-bottom: 20px;display:none">Tải thêm</button> --}}
           <!-- /.row -->
 
         </div>
@@ -462,7 +462,6 @@
         $(document).ready(function(){
             $('.checkvalue').change(function(){
                 // var pro = $('[name="pro"]:radio:checked').val();
-                document.getElementById("button").style.display = "block";
                 var flag = '1';
                 var local = $('[name="local"]:radio:checked').val();
                 if(local ==null)
@@ -490,26 +489,58 @@
                 });
                  // $('.link').hide();
             });
-        });
-        $('#button').click(function(){
-          var a= $('.pagination li.active + li a').attr('href');
-          if(a)
-          {
-          $.get(a,function(data){
-            document.getElementById('filtersearch').innerHTML += data;
-          });
-          
-          $('ul.pagination').remove();
-          $('ul.pagination').hide();
-           }
-           else
-           {
-            alert('Hết sản phẩm');
-             // document.getElementByI('button').style.display = "none";
-             $('#button').hide();
-           }
-          
+            $('.search').change(function(){
+              var key_search = $(this).val();
+              $.get("result/"+key_search,function(data){
+                    $('#filtersearch').html(data);
+               $.get("findresult/"+key_search,function(data){
+                    $('.search-result').html(data);
+                  });
             });
+            });
+            $('.pagination a').click(function(e){
+           e.preventDefault();
+           var page = $(this).attr('href');
+           getPosts(page);
+           $("html, body").animate({ scrollTop: 0 }, 2000);
+       });
+        });
+        // $('.page-link').click(function(){
+        //   var a = $(this).attr('href');
+        //   alert(a);
+        // });
+
+ 
+       function getPosts(page)
+       {
+           $.ajax({
+               type: "GET",
+               url: page
+           })
+           .success(function(data) {
+               $('#filtersearch').html(data);
+           });
+             
+       }
+        // $('#button').click(function(){
+        //   var a= $('.pagination li.active + li a').attr('href');
+        //   if(a)
+        //   {
+        //   $.get(a,function(data){
+        //     document.getElementById('filtersearch').innerHTML += data;
+        //   });
+          
+        //   $('ul.pagination').remove();
+        //   $('ul.pagination').hide();
+        //    }
+        //    else
+        //    {
+        //     alert('Hết sản phẩm');
+        //      // document.getElementByI('button').style.display = "none";
+        //      $('#button').hide();
+        //    }
+          
+        //     });
     </script>
   </body>
   

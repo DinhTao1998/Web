@@ -161,59 +161,60 @@ class AjaxController extends Controller
                      $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
             }
         }
-        echo "<div class='row'>";
-         foreach($product as $pro)
-         {
-            if($pro->cost != null)
-             echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
+        return view('page.result',compact('product'));
+        // echo "<div class='row'>";
+        //  foreach($product as $pro)
+        //  {
+        //     if($pro->cost != null)
+        //      echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
-             <div class='card h-100 grow'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
-             <div class='card-img' style='height: 211.75px;'>
-             <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
-             </div>
+        //      <div class='card h-100 grow'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
+        //      <div class='card-img' style='height: 211.75px;'>
+        //      <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
+        //      </div>
 
-             <div class='card-body'>
+        //      <div class='card-body'>
 
-             <h4 class='card-title'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
-             </h4>
-             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".number_format((float)$pro->cost)."đ</span><span class='sale-tag'>-".$pro->sale."%</span>
-             <p class='card-text'></p>
-             </div>
-             <div class='card-footer'>
-             <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src'  src='".$pro->place_image."'>
-             </div>
-             </div>
-             </div>";
-             else
-                echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
+        //      <h4 class='card-title'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
+        //      </h4>
+        //      <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".number_format((float)$pro->cost)."đ</span><span class='sale-tag'>-".$pro->sale."%</span>
+        //      <p class='card-text'></p>
+        //      </div>
+        //      <div class='card-footer'>
+        //      <small class='text-muted'>".$pro->location."</small>
+        //      <img class='img-src'  src='".$pro->place_image."'>
+        //      </div>
+        //      </div>
+        //      </div>";
+        //      else
+        //         echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
-             <div class='card h-100 grow'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
-             <div class='card-img' style='height: 211.75px;'>
-             <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
-             </div>
+        //      <div class='card h-100 grow'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
+        //      <div class='card-img' style='height: 211.75px;'>
+        //      <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
+        //      </div>
 
-             <div class='card-body'>
+        //      <div class='card-body'>
 
-             <h4 class='card-title'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
-             </h4>
-             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".$pro->cost."</span><span class='sale-tag'></span>
-             <p class='card-text'></p>
-             </div>
-             <div class='card-footer'>
-             <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src'  src='".$pro->place_image."'>
-             </div>
-             </div>
-             </div>";
-        }
-        echo "</div>
-                                    <div class='row link' style='display:none'>".$product->links()."</div>
-                                                                            </div>";
+        //      <h4 class='card-title'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
+        //      </h4>
+        //      <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".$pro->cost."</span><span class='sale-tag'></span>
+        //      <p class='card-text'></p>
+        //      </div>
+        //      <div class='card-footer'>
+        //      <small class='text-muted'>".$pro->location."</small>
+        //      <img class='img-src'  src='".$pro->place_image."'>
+        //      </div>
+        //      </div>
+        //      </div>";
+        // }
+        // echo "</div>
+        //                             <div class='row link' style='width: 520px; margin-left: 225px; margin-right: -15px'>";echo $product->links()."</div>
+        //                                                                     </div>";
         // echo "</div>
         //                             <button id='button' class='row' type='button' style='margin:0 auto'>Tải thêm</button>";
     }

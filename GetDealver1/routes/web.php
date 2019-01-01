@@ -40,3 +40,5 @@ Route:: group(['prefix'=>'ajax'],function(){
 Route:: group(['prefix'=>'ajax'],function(){
 	Route::get('searchresult/{key}/{local}/{place}/{price}/{flag}','AjaxController@searchResult');
 });
+Route::get('result/{key_search}','GetDealController@getResult');
+Route::get('findresult/{key_search}','GetDealController@getFindResult');
