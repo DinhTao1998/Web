@@ -35,10 +35,10 @@ Route::get('filtersearch',[
 	'uses'=> 'GetDealController@getSearch'
 ]);
 Route:: group(['prefix'=>'ajax'],function(){
-	Route::get('filtersearch/{key}/{local}/{place}/{price}/{flag}/{sort}','AjaxController@filterSearch');
+	Route::get('filtersearch/{key}/{local}/{place_0}/{place_1}/{place_2}/{place_3}/{price}/{flag}/{sort}','AjaxController@filterSearch');
 });
 Route:: group(['prefix'=>'ajax'],function(){
-	Route::get('searchresult/{key}/{local}/{place}/{price}/{flag}','AjaxController@searchResult');
+	Route::get('searchresult/{key}/{local}/{place_0}/{place_1}/{place_2}/{place_3}/{price}/{flag}','AjaxController@searchResult');
 });
 Route::get('result/{key_search}','GetDealController@getResult');
 Route::get('findresult/{key_search}','GetDealController@getFindResult');

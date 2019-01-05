@@ -114,12 +114,12 @@
 
               </div>
               <div class="col-4" style="padding-left: 30px; padding-right: 0px">
-               {{--  <form action="{{route('result')}}" method="get" accept-charset="utf-8" role="search" style> --}}
+                <form action="{{route('search')}}" method="get" accept-charset="utf-8" role="search" style>
                           <div class="search_bar barhide" focus="none" style="display:block">
                             <input class ="search" placeholder="Tìm kiếm sản phẩm..." type="search" name="key" focus="none" autofocus="true" value="{{$key_search}}" id="key_search">
                             <button class="btn_search" type="submit"><i class="fa fa-search"></i></button>
                           </div>
-                       {{--  </form> --}}
+                        </form>
               </div>
               <div class="col-6" style="margin-right:0px; margin-left:0px; padding-left: 0px;">
                 <nav class="site-navigation text-right" role="navigation">

@@ -95,13 +95,18 @@ class AjaxController extends Controller
     //                             }
         
     // }
-    public function filterSearch($key,$local,$place,$price,$flag,$sort){
+    public function filterSearch($key_search,$key,$local,$place_0,$place_1,$place_2,$place_3,$price,$sort){
+        // if($key=='flag')
+        //     $key = '%';
+        // else
+        if($key_search=='flag')
+            $key_search='%';
+        else
+        $key_search=str_replace(" ", '%',$key_search);
         if($key=='flag')
             $key = '%';
-        else
-        $key=str_replace(" ", '%',$key);
-        if($place=='flag')
-            $place = '%';
+        // if($place=='flag')
+        //     $place = '%';
         if($local=='flag')
             $local = '%';
         $giadau;
@@ -136,32 +141,34 @@ class AjaxController extends Controller
             $giadau= '1000000';
             $giacuoi= '1000000000';
         }
-        if($flag =='1')
-        {
+        // if($flag =='1')
+        // {
             if($sort=='2')
-                $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
+                $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->orderBy('price','asc')->paginate(40);
             else
             {
                 if($sort =='3')
-                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->orderBy('price','desc')->paginate(40);
                 else
-                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->orderBy('sale','desc')->paginate(40);
             }
-
-        }
-        else
-        {
-            if($sort =='2')
-                 $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
-            else
-            {
-                if($sort =='3')
-                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
-                 else
-                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
-            }
-        }
         return view('page.result',compact('product'));
+        }
+
+        // }
+        // else
+        // {
+        //     if($sort =='2')
+        //          $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
+        //     else
+        //     {
+        //         if($sort =='3')
+        //              $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
+        //          else
+        //              $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
+        //     }
+        // }
+        
         // echo "<div class='row'>";
         //  foreach($product as $pro)
         //  {
@@ -217,14 +224,15 @@ class AjaxController extends Controller
         //                                                                     </div>";
         // echo "</div>
         //                             <button id='button' class='row' type='button' style='margin:0 auto'>Tải thêm</button>";
-    }
-     public function searchResult($key,$local,$place,$price,$flag){
+     public function searchResult($key_search,$key,$local,$place_0,$place_1,$place_2,$place_3,$price){
+         if($key_search=='flag')
+            $key_search='%';
+        else
+        $key_search=str_replace(" ", '%',$key_search);
         if($key=='flag')
             $key = '%';
-        else
-        $key=str_replace(" ", '%',$key);
-        if($place=='flag')
-            $place = '%';
+        // if($place=='flag')
+        //     $place = '%';
         if($local=='flag')
             $local = '%';
          $giadau;
@@ -259,10 +267,10 @@ class AjaxController extends Controller
             $giadau= '1000000';
             $giacuoi= '1000000000';
         }
-        if($flag=='1')
-        $product =sizeof(Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
-        else
-            $product =sizeof(Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
+        // if($flag=='1')
+        $product =sizeof(Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->get());
+        // else
+        //     $product =sizeof(Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
         echo "<span>Có <b>".$product."</b> kết quả trong mỹ phẩm</span>";
         
     }

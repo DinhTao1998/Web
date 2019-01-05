@@ -6,17 +6,17 @@
                                     <div class="card h-100 grow">
                                       <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}">
 
-                                        {{-- <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div> --}}
+                                        <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div>
                                         <div class="card-img" style="height: 211.75px;">
                                           
-                                            <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
+                                            <img class="card-img-top" src="{{$value -> image}}"title="{{$value->product_title}}" alt="" style="max-height:212px"></a>  
                                         </div>
                                         
                                         <div class="card-body">
 
                                             <h4 class="card-title">
 
-                                                <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" >{{$value ->product_name}}</a>
+                                                <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" title="{{$value->product_title}}">{{$value ->product_name}}</a>
                                             </h4>
                                             <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}đ</span><span class="sale-tag">-{{$value ->sale}}%</span>
                                             <p class="card-text"></p>
@@ -33,15 +33,15 @@
                                   
                                     <div class="card h-100 grow">
                                       <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}">
-                                        {{-- <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div> --}}
+                                        <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div>
                                         <div class="card-img" style="height: 211.75px;">
-                                            <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
+                                            <img class="card-img-top" src="{{$value -> image}}" title="{{$value->product_title}}" alt="" style="max-height:212px"></a>  
                                         </div>
                                         
                                         <div class="card-body">
                                             
                                             <h4 class="card-title">
-                                                <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" >{{$value ->product_name}}</a>
+                                                <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}"title="{{$value->product_title}}" >{{$value ->product_name}}</a>
                                             </h4>
                                             <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{-- {{$value ->cost}} --}}</span><span class="sale-tag">{{-- {{$value ->sale}} --}}</span>
                                             <p class="card-text"></p>
