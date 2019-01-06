@@ -87,13 +87,12 @@
           <a class="dropdown-item" href="forgot-password.html">Quên mật khẩu</a>
         </div>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="table.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý sản phẩm</span></a>
         </li>
-
-         <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="tableproduct.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý danh mục sản phẩm</span></a>
@@ -109,14 +108,14 @@
             <li class="breadcrumb-item">
               <a href="index.html">Bảng điều khiển</a>
             </li>
-            <li class="breadcrumb-item active">Quản lý sản phẩm</li>
+            <li class="breadcrumb-item active">Quản lý danh mục sản phẩm</li>
           </ol>
 
           <!-- DataTables Example -->
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-            Bảng sản phẩm</div>
+            Bảng danh mục sản phẩm</div>
             <div class="card-body">
               <div class="table-responsive">
                <?php
@@ -133,41 +132,33 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Product Name</th>
-                    <th>Link Product</th>
-                    <th>Price</th>
-                    <th>Cost</th>
-                    <th>Sale</th>
-                    <th>Location</th>                    
+                    <th>Product Type Name</th>
+                    <th>Image</th>                  
                   </tr>
                 </thead>
                 <tbody>
                   <?php
                   require "connect.php";
                   $from=($trang-1)*$sotin1trang;
-                  $sql="select * from product LIMIT $from,$sotin1trang";
+                  $sql="select * from producttype LIMIT $from,$sotin1trang";
                   $query=mysqli_query($con,$sql);                    
                   while($row=mysqli_fetch_array($query)){
                     ?>
                     <tr>
                       <td><?php echo $row['id']?></td>
-                      <td><?php echo $row['product_name']?></td>
-                      <td><?php echo $row['link']?></td>
-                      <td><?php echo $row['price']?></td>     
-                      <td><?php echo $row['cost']?></td>
-                      <td><?php echo $row['sale']?></td> 
-                      <td><?php echo $row['location']?></td>  
+                      <td><?php echo $row['product_type_name']?></td>
+                      <td><?php echo $row['image']?></td> 
                     </tr>                
                   </tbody> 
                 <?php } ?>
               </table>
               <?php
-              $x=mysqli_query($con,"select id from product");
+              $x=mysqli_query($con,"select id from producttype");
               $tongsotin=mysqli_num_rows($x);
               $sotrang=ceil($tongsotin/$sotin1trang);
               for($t=1;$t<=$sotrang;$t++){
                 echo "
-                <a href='table.php?trang=$t'>$t</a>-";
+                <a href='tableproduct.php?trang=$t'>$t</a>-";
               }
               ?>
 
