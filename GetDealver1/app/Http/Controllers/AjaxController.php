@@ -181,24 +181,7 @@ class AjaxController extends Controller
         //      <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
         //      </div>
 
-<<<<<<< HEAD
-             <h4 class='card-title'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
-             </h4>
-             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".number_format((float)$pro->cost)."đ</span><span class='sale-tag'>-".$pro->sale."</span>
-             <p class='card-text'></p>
-             </div>
-             <div class='card-footer'>
-             <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src'  src='".$pro->place_image."'>
-             </div>
-             </div>
-             </div>";
-             else
-                echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
-=======
         //      <div class='card-body'>
->>>>>>> 80b8df17b80432c0e86c2a2ac0c5ba052eec769a
 
         //      <h4 class='card-title'>
         //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
