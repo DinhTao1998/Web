@@ -556,7 +556,7 @@ a {
     position: absolute;
     bottom: 0;
     height: 2px;
-    background: #28a745;
+    background: #6200ee;
     left: 0;
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -973,4 +973,20 @@ a {
 .footer-bg-color{
   background: rgb(241,230,74) !important;
   background-image: linear-gradient( 135deg, #FF6FD8 10%, #3813C2 100%) !important;
+}
+
+.btn-primary:hover{
+  background: transparent !important;
+  border-color: #6200ee !important;
+}
+
+.load-more-btn{
+  color:white;
+   background: #6200ee;
+   border-color: #6200ee
+}
+
+.load-more-btn:hover{
+  background: transparent;
+  color: black;
 }
