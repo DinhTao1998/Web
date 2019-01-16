@@ -35,8 +35,33 @@ Route::get('filtersearch',[
 	'uses'=> 'GetDealController@getSearch'
 ]);
 Route:: group(['prefix'=>'ajax'],function(){
-	Route::get('filtersearch/{key}/{local}/{place}/{price}/{flag}/{sort}','AjaxController@filterSearch');
+	Route::get('filtersearch/{key}/{local}/{place_0}/{place_1}/{place_2}/{place_3}/{price}/{flag}/{sort}','AjaxController@filterSearch');
 });
 Route:: group(['prefix'=>'ajax'],function(){
-	Route::get('searchresult/{key}/{local}/{place}/{price}/{flag}','AjaxController@searchResult');
+	Route::get('searchresult/{key}/{local}/{place_0}/{place_1}/{place_2}/{place_3}/{price}/{flag}','AjaxController@searchResult');
+});
+Route::get('result/{key_search}','GetDealController@getResult');
+Route::get('findresult/{key_search}','GetDealController@getFindResult');
+// Route::get('admin',[
+// 	'as'=>'admin',
+// 	'uses'=> 'AdminController@getLayout'
+// ]);
+//  Route::get('danhmuc',[
+// 	'as'=>'danhmuc',
+// 	'uses'=> 'AdminController@getDanhMuc'
+// ]);
+//   Route::get('quanlisanpham',[
+// 	'as'=>'quanlisanpham',
+// 	'uses'=> 'AdminController@getDanhSachSanPham'
+// ]);
+Route:: group(['prefix'=>'admin'],function(){
+	Route::group(['prefix'=>'danhmuc'],function(){
+		Route::get('danhsach','AdminController@getDanhMuc');
+		Route::get('sua','AdminController@getSuaDanhMuc');
+		Route::post('them','AdminController@getThemDanhMuc');
+		Route::get('xoa','AdminController@getXoaDanhMuc');
+	});
+	Route::get('trangchu','AdminController@getLayout');
+	Route::get('quanlisanpham','AdminController@getDanhSachSanPham');
+
 });

@@ -88,9 +88,21 @@
         </div>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="tables.html">
+        <a class="nav-link" href="table.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý sản phẩm</span></a>
+        </li>
+
+         <li class="nav-item">
+        <a class="nav-link" href="tableproduct.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Quản lý danh mục sản phẩm</span></a>
+        </li>
+
+         <li class="nav-item">
+        <a class="nav-link" href="table_email.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Quản lý Email</span></a>
         </li>
       </ul>
 
@@ -101,7 +113,7 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Bảng điều khiển</a>
+              <a href="index.html">Bảng điều khiển</a>
             </li>
             <li class="breadcrumb-item active">Quản lý sản phẩm</li>
           </ol>
@@ -110,11 +122,21 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-            Bảng dữ liệu</div>
+            Bảng sản phẩm</div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
+               <?php
+               $sotin1trang=15;
+               if(isset($_GET["trang"])){
+                $trang=$_GET["trang"];
+                settype($trang, "int");
+              }else {
+                $trang=1;
+              }
+              ?>
+              <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
+                
+                <thead>
                   <tr>
                     <th>ID</th>
                     <th>Product Name</th>
@@ -126,65 +148,84 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>2</td>
-                    <td>Kem lót mịn da che khuyết điểm Maybelline New York...</td>
-                    <td>//www.lazada.vn/products/kem-lot-min-da-che-khuyet...</td>
-                    <td>101000</td>      
-                    <td>155000</td>  
-                    <td>35%</td>  
-                    <td>Hồ Chí Minh</td>             
-                  </tr>                 
-                </tbody> 
-                </table>
-              </div>
-            </div>
-            <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
-          </div>
+                  <?php
+                  require "connect.php";
+                  $from=($trang-1)*$sotin1trang;
+                  $sql="select * from product LIMIT $from,$sotin1trang";
+                  $query=mysqli_query($con,$sql);                    
+                  while($row=mysqli_fetch_array($query)){
+                    ?>
+                    <tr>
+                      <td><?php echo $row['id']?></td>
+                      <td><?php echo $row['product_name']?></td>
+                      <td><?php echo $row['link']?></td>
+                      <td><?php echo $row['price']?></td>     
+                      <td><?php echo $row['cost']?></td>
+                      <td><?php echo $row['sale']?></td> 
+                      <td><?php echo $row['location']?></td>  
+                    </tr>                
+                  </tbody> 
+                <?php } ?>
+              </table>
+              <?php
+              $x=mysqli_query($con,"select id from product");
+              $tongsotin=mysqli_num_rows($x);
+              $sotrang=ceil($tongsotin/$sotin1trang);
+              for($t=1;$t<=$sotrang;$t++){
+                echo "
+                <a href='table.php?trang=$t'>$t</a>-";
+              }
+              ?>
 
-          <!-- Scroll to Top Button-->
-          <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-          </a>
-
-          <!-- Logout Modal-->
-          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Đăng xuất?</h5>
-                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div class="modal-body">Chọn "Đăng xuất" để kết thúc phiên hoạt động</div>
-                <div class="modal-footer">
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                  <a class="btn btn-primary" href="login.html">Đăng Xuất</a>
-                </div>
-              </div>
             </div>
           </div>
+          <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
+        </div>
 
-          <!-- Bootstrap core JavaScript-->
-          <script src="vendor/jquery/jquery.min.js"></script>
-          <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
 
-          <!-- Core plugin JavaScript-->
-          <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đăng xuất?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Chọn "Đăng xuất" để kết thúc phiên hoạt động</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-primary" href="login.html">Đăng Xuất</a>
+              </div>
+            </div>
+          </div>
+        </div>
 
-          <!-- Page level plugin JavaScript-->
-          <script src="vendor/chart.js/Chart.min.js"></script>
-          <script src="vendor/datatables/jquery.dataTables.js"></script>
-          <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+       
 
-          <!-- Custom scripts for all pages-->
-          <script src="js/sb-admin.min.js"></script>
+        <!-- Core plugin JavaScript -->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-          <!-- Demo scripts for this page-->
-          <script src="js/demo/datatables-demo.js"></script>
-          <script src="js/demo/chart-area-demo.js"></script>
+        <!-- Page level plugin JavaScript-->
+        <script src="vendor/chart.js/Chart.min.js"></script>
+        <script src="vendor/datatables/jquery.dataTables.js"></script>
+        <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
-        </body>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin.min.js"></script>
 
-        </html>
+        <!-- Demo scripts for this page-->
+       <!--  <script src="js/demo/datatables-demo.js"></script> -->
+        <script src="js/demo/chart-area-demo.js"></script>
+
+      </body>
+
+      </html>

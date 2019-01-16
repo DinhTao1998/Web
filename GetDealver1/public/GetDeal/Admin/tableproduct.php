@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>GetDeal Admin - Get Deal</title>
+  <title>GetDeal Admin - Quản lý sản phẩm</title>
 
   <!-- Bootstrap core CSS-->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -46,13 +46,13 @@
         </div>
       </div>
     </form>
+
     <!-- Navbar -->
     <ul class="navbar-nav ml-auto ml-md-0">
+
       <li class="nav-item dropdown no-arrow">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Chương Trần
           <i class="fas fa-user-circle fa-fw"></i>
-          
-
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
           <a class="dropdown-item" href="#">Cài đặt</a>
@@ -69,7 +69,7 @@
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Bảng điều khiển</span>
@@ -92,14 +92,13 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý sản phẩm</span></a>
         </li>
-
-         <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="tableproduct.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý danh mục sản phẩm</span></a>
         </li>
-        
-        <li class="nav-item">
+
+         <li class="nav-item">
         <a class="nav-link" href="table_email.php">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý Email</span></a>
@@ -113,114 +112,73 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Bảng điều khiển</a>
+              <a href="index.html">Bảng điều khiển</a>
             </li>
-            <li class="breadcrumb-item active">Tổng quan</li>
+            <li class="breadcrumb-item active">Quản lý danh mục sản phẩm</li>
           </ol>
 
-          <!-- Icon Cards-->
-          <div class="row">
-
-            <div class="col-sm-6 col-lg-4">
-              <div class="overview-item overview-item--c1">
-                <div class="overview__inner">
-                  <div class="overview-box clearfix">
-                   <div class="icon">
-                    <i class="zmdi zmdi-account-o"></i>
-                  </div>
-                  <div class="text">
-                    <h2>353</h2>
-                    <span>Sản phẩm</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <canvas id="widgetChart1"></canvas>                               
-                </div> 
-                <a class="card-footer text-white clearfix small z-1" href="table.php">
-                  <span class="float-left">Chi tiết</span>
-                  <span class="float-right">
-                    <i class="fa fa-arrow-circle-right"></i>
-                  </span>
-                </a>                       
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-lg-4">
-            <div class="overview-item overview-item--c2">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="zmdi zmdi-calendar-note"></i>
-                  </div>
-                  <div class="text">
-                    <h2>12</h2>
-                    <span>Danh mục sản phẩm</span>
-                  </div>
-                </div>
-                <div class="overview-chart">
-                  <canvas id="widgetChart3"></canvas>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="tableproduct.php">
-                 <span class="float-left">Chi tiết</span>
-                 <span class="float-right">
-                  <i class="fa fa-arrow-circle-right"></i>
-                </span>
-              </a>                                               
-            </div>
-          </div>
-        </div>
-
-         <div class="col-sm-6 col-lg-4">
-            <div class="overview-item overview-item--c4">
-              <div class="overview__inner">
-                <div class="overview-box clearfix">
-                  <div class="icon">
-                    <i class="zmdi zmdi-calendar-note"></i>
-                  </div>
-                  <div class="text">
-                    <h2>10</h2>
-                    <span>Danh mục Email</span>
-                  </div>
-                </div>
-                <div class="overview-chart">  
-                  <canvas id="widgetChart3"></canvas>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="table_email.php">
-                 <span class="float-left">Chi tiết</span>
-                 <span class="float-right">
-                  <i class="fa fa-arrow-circle-right"></i>
-                </span>
-              </a>                                               
-            </div>
-          </div>
-        </div>
-
-
-        <!-- DataTables Example -->
-        <div class="col-lg-12">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            <a class="card-footer1 text-white clearfix small2 z-1" href="table.php">
-            Bảng sản phẩm</a>
-          </div>
-
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            <a class="card-footer1 text-white clearfix small2 z-1" href="tableproduct.php">
-            Bảng danh mục sản phẩm</a>
-          </div>
-
+          <!-- DataTables Example -->
+          <div class="card mb-3">
             <div class="card-header">
-            <i class="fas fa-table"></i>
-            <a class="card-footer1 text-white clearfix small2 z-1" href="table_email.php">
-            Bảng danh mục Email</a>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
+              <i class="fas fa-table"></i>
+            Bảng danh mục sản phẩm</div>
+            <div class="card-body">
+              <div class="table-responsive">
+               <?php
+               $sotin1trang=15;
+               if(isset($_GET["trang"])){
+                $trang=$_GET["trang"];
+                settype($trang, "int");
+              }else {
+                $trang=1;
+              }
+              ?>
               <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
-               </table> 
+                
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Product Type Name</th>
+                    <th>Image</th>                  
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php
+                  require "connect.php";
+                  $from=($trang-1)*$sotin1trang;
+                  $sql="select * from producttype LIMIT $from,$sotin1trang";
+                  $query=mysqli_query($con,$sql);                    
+                  while($row=mysqli_fetch_array($query)){
+                    ?>
+                    <tr>
+                      <td><?php echo $row['id']?></td>
+                      <td><?php echo $row['product_type_name']?></td>
+                      <td><?php echo $row['image']?></td> 
+                    </tr>                
+                  </tbody> 
+                <?php } ?>
+              </table>
+              <?php
+              $x=mysqli_query($con,"select id from producttype");
+              $tongsotin=mysqli_num_rows($x);
+              $sotrang=ceil($tongsotin/$sotin1trang);
+              for($t=1;$t<=$sotrang;$t++){
+                echo "
+                <a href='tableproduct.php?trang=$t'>$t</a>-";
+              }
+              ?>
+
             </div>
           </div>
+          <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
+        </div>
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -242,8 +200,9 @@
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+       
 
-        <!-- Core plugin JavaScript-->
+        <!-- Core plugin JavaScript -->
         <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
         <!-- Page level plugin JavaScript-->
@@ -255,7 +214,7 @@
         <script src="js/sb-admin.min.js"></script>
 
         <!-- Demo scripts for this page-->
-        <script src="js/demo/datatables-demo.js"></script>
+        <!-- <script src="js/demo/datatables-demo.js"></script> -->
         <script src="js/demo/chart-area-demo.js"></script>
 
       </body>

@@ -95,13 +95,18 @@ class AjaxController extends Controller
     //                             }
         
     // }
-    public function filterSearch($key,$local,$place,$price,$flag,$sort){
+    public function filterSearch($key_search,$key,$local,$place_0,$place_1,$place_2,$place_3,$price,$sort){
+        // if($key=='flag')
+        //     $key = '%';
+        // else
+        if($key_search=='flag')
+            $key_search='%';
+        else
+        $key_search=str_replace(" ", '%',$key_search);
         if($key=='flag')
             $key = '%';
-        else
-        $key=str_replace(" ", '%',$key);
-        if($place=='flag')
-            $place = '%';
+        // if($place=='flag')
+        //     $place = '%';
         if($local=='flag')
             $local = '%';
         $giadau;
@@ -136,45 +141,47 @@ class AjaxController extends Controller
             $giadau= '1000000';
             $giacuoi= '1000000000';
         }
-        if($flag =='1')
-        {
+        // if($flag =='1')
+        // {
             if($sort=='2')
-                $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
+                $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->orderBy('price','asc')->paginate(40);
             else
             {
                 if($sort =='3')
-                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->orderBy('price','desc')->paginate(40);
                 else
-                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
+                    $product =Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->orderBy('sale','desc')->paginate(40);
             }
-
+        return view('page.result',compact('product'));
         }
-        else
-        {
-            if($sort =='2')
-                 $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
-            else
-            {
-                if($sort =='3')
-                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
-                 else
-                     $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
-            }
-        }
-        echo "<div class='row'>";
-         foreach($product as $pro)
-         {
-            if($pro->cost != null)
-             echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
-             <div class='card h-100 grow'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
-             <div class='card-img' style='height: 211.75px;'>
-             <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
-             </div>
+        // }
+        // else
+        // {
+        //     if($sort =='2')
+        //          $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','asc')->paginate(40);
+        //     else
+        //     {
+        //         if($sort =='3')
+        //              $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('price','desc')->paginate(40);
+        //          else
+        //              $product =Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->orderBy('sale','desc')->paginate(40);
+        //     }
+        // }
+        
+        // echo "<div class='row'>";
+        //  foreach($product as $pro)
+        //  {
+        //     if($pro->cost != null)
+        //      echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
-             <div class='card-body'>
+        //      <div class='card h-100 grow'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
+        //      <div class='card-img' style='height: 211.75px;'>
+        //      <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
+        //      </div>
 
+<<<<<<< HEAD
              <h4 class='card-title'>
              <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
              </h4>
@@ -189,41 +196,60 @@ class AjaxController extends Controller
              </div>";
              else
                 echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
+=======
+        //      <div class='card-body'>
+>>>>>>> 80b8df17b80432c0e86c2a2ac0c5ba052eec769a
 
-             <div class='card h-100 grow'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
-             <div class='card-img' style='height: 211.75px;'>
-             <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
-             </div>
+        //      <h4 class='card-title'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
+        //      </h4>
+        //      <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".number_format((float)$pro->cost)."đ</span><span class='sale-tag'>-".$pro->sale."%</span>
+        //      <p class='card-text'></p>
+        //      </div>
+        //      <div class='card-footer'>
+        //      <small class='text-muted'>".$pro->location."</small>
+        //      <img class='img-src'  src='".$pro->place_image."'>
+        //      </div>
+        //      </div>
+        //      </div>";
+        //      else
+        //         echo "<div class='col-lg-3 col-md-4 col-xs-12 col-sm-6 mb-4'>
 
-             <div class='card-body'>
+        //      <div class='card h-100 grow'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."'>
+        //      <div class='card-img' style='height: 211.75px;'>
+        //      <img class='card-img-top' src='".$pro->image."' alt='' style='max-height:212px'></a>  
+        //      </div>
 
-             <h4 class='card-title'>
-             <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
-             </h4>
-             <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".$pro->cost."</span><span class='sale-tag'></span>
-             <p class='card-text'></p>
-             </div>
-             <div class='card-footer'>
-             <small class='text-muted'>".$pro->location."</small>
-             <img class='img-src'  src='".$pro->place_image."'>
-             </div>
-             </div>
-             </div>";
-        }
-        echo "</div>
-                                    <div class='row link' style='display:none'>".$product->links()."</div>
-                                                                            </div>";
+        //      <div class='card-body'>
+
+        //      <h4 class='card-title'>
+        //      <a href='https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url=".$pro->link."' >".$pro->product_name."</a>
+        //      </h4>
+        //      <span class='final-price'>".number_format($pro->price)."đ</span><span class='price-regular'>".$pro->cost."</span><span class='sale-tag'></span>
+        //      <p class='card-text'></p>
+        //      </div>
+        //      <div class='card-footer'>
+        //      <small class='text-muted'>".$pro->location."</small>
+        //      <img class='img-src'  src='".$pro->place_image."'>
+        //      </div>
+        //      </div>
+        //      </div>";
+        // }
+        // echo "</div>
+        //                             <div class='row link' style='width: 520px; margin-left: 225px; margin-right: -15px'>";echo $product->links()."</div>
+        //                                                                     </div>";
         // echo "</div>
         //                             <button id='button' class='row' type='button' style='margin:0 auto'>Tải thêm</button>";
-    }
-     public function searchResult($key,$local,$place,$price,$flag){
+     public function searchResult($key_search,$key,$local,$place_0,$place_1,$place_2,$place_3,$price){
+         if($key_search=='flag')
+            $key_search='%';
+        else
+        $key_search=str_replace(" ", '%',$key_search);
         if($key=='flag')
             $key = '%';
-        else
-        $key=str_replace(" ", '%',$key);
-        if($place=='flag')
-            $place = '%';
+        // if($place=='flag')
+        //     $place = '%';
         if($local=='flag')
             $local = '%';
          $giadau;
@@ -258,10 +284,10 @@ class AjaxController extends Controller
             $giadau= '1000000';
             $giacuoi= '1000000000';
         }
-        if($flag=='1')
-        $product =sizeof(Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key.'%')->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
-        else
-            $product =sizeof(Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
+        // if($flag=='1')
+        $product =sizeof(Product::where('location','like','%'.$local.'%')->where('product_title','like','%'.$key_search.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->where('type_product','like','%'.$key.'%')->whereIn('place',[$place_0,$place_1,$place_2,$place_3])->get());
+        // else
+        //     $product =sizeof(Product::where('location','like','%'.$local.'%')->where('type_product',$key)->where('place','like','%'.$place.'%')->where('price','>',$giadau)->where('price','<',$giacuoi)->get());
         echo "<span>Có <b>".$product."</b> kết quả trong mỹ phẩm</span>";
         
     }

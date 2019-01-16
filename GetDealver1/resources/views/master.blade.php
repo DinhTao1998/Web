@@ -35,7 +35,7 @@
 </head>
 
 <body>
-  @include('header')
+  {{-- @include('header') --}}
 
     @yield('content')
 

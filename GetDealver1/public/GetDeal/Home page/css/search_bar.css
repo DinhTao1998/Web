@@ -48,3 +48,16 @@
     display:none !important;
   }
 }
+#button{
+  width:20%;
+  border:1px lightblue solid;
+  border-radius:10px;
+  background-color:white;
+  color: blue;
+}
+#button:hover
+{
+  background-color:lightblue;
+  color:white;
+  font-weight:bold;
+}

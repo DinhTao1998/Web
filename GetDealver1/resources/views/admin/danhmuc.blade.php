@@ -1,0 +1,92 @@
+@extends('layoutAdmin')
+ @section('content')
+  <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="index.html">Bảng điều khiển</a>
+            </li>
+            <li class="breadcrumb-item active">Quản lý danh mục sản phẩm</li>
+          </ol>
+
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+            Bảng danh mục sản phẩm</div>
+            <div class="card-body">
+               <div >
+            <a data-toggle="collapse" href="#themdanhmuc">
+              <h4 style="text-align: center">Thêm Danh Mục</h4>
+            </a>
+            <div class="collapse" id="themdanhmuc" style="text-align: center">
+              <lable>Tên danh mục <input type="text" name="tendm" placeholder="nhập tên danh mục"></able>
+              <button type="button" id="">Thêm</button>
+            </div>
+              <div class="table-responsive">
+              <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
+                
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Product Type Name</th>
+                    <th>Image</th>                  
+                  </tr>
+                </thead>
+                <div id="bangdanhmuc">
+                @foreach($product_type as $pr)
+                <tr>
+                    <td>{{$pr->id}}</td>
+                    <td>{{$pr->product_type_name}}</td>
+                    <td>{{$pr->image}}</td>
+                </tr>
+                @endforeach
+              </div>
+              </table>
+            </div>
+          </div>
+         
+          </div>
+          <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
+        </div>
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+          <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Đăng xuất?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">Chọn "Đăng xuất" để kết thúc phiên hoạt động</div>
+              <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
+                <a class="btn btn-primary" href="login.html">Đăng Xuất</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endsection
+        @section('script')
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $('#adddm').click(function(){
+              var tendm = $('[name="tendm"]:text').val();
+              // $.get("admin/danhmuc/them/"+tendm,function(data){
+              //   $('html').html(data);
+              // });
+              alert(tendm);
+            });
+          });
+        </script>
+        @endsection
+

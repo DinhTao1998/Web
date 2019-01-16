@@ -36,6 +36,20 @@ class GetDealController extends Controller
        
         return view('page.search',compact('product','key_search','product_type','pr_location','place','count'));
     }
+    public function getResult($key_search ){
+        if(strpos($key_search, ' ')!==false)
+        $key_search = str_replace(" ", '%',$key_search);
+             # code...
+        $product = Product::where('product_name','like','%'.$key_search.'%')->orderBy('price','asc')->take(100)->paginate(40);
+        return view('page.result',compact('product','key_search'));
+    }
+    public function getFindResult($key_search ){
+        if(strpos($key_search, ' ')!==false)
+        $key_search = str_replace(" ", '%',$key_search);
+             # code...
+        $product =sizeof(Product::where('product_name','like','%'.$key_search.'%')->orderBy('price','asc')->get());
+        echo "<span>Có <b>".$product."</b> kết quả trong mỹ phẩm</span>";
+    }
     // su dung cho search bang fillter
      public function getSearch1(request $req){
         // $pro = $req->pro;

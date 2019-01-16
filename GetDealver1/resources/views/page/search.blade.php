@@ -371,7 +371,7 @@
                             </div>
                         </div>
                         <div id="filtersearch">
-                            <div class="row" >
+                           {{--  <div class="row" >
                                 @foreach($product as $value)
                                 @if($value->cost!=null)
                                 <div class="col-lg-3 col-md-6 col-xs-12 col-sm-6 mb-4">
@@ -379,7 +379,7 @@
                                     <div class="card h-100 grow">
                                       <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}">
 
-                                        {{-- <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div> --}}
+                                        <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div>
                                         <div class="card-img" style="height: 211.75px;">
                                           
                                             <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
@@ -406,7 +406,7 @@
                                   
                                     <div class="card h-100 grow">
                                       <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}">
-                                        {{-- <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div> --}}
+                                        <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div>
                                         <div class="card-img" style="height: 211.75px;">
                                             <img class="card-img-top" src="{{$value -> image}}" alt="" style="max-height:212px"></a>  
                                         </div>
@@ -416,7 +416,7 @@
                                             <h4 class="card-title">
                                                 <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
-                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{-- {{$value ->cost}} --}}</span><span class="sale-tag">{{-- {{$value ->sale}} --}}</span>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular"></span><span class="sale-tag"></span>
                                             <p class="card-text"></p>
                                         </div>
                                                 <div class="card-footer">
@@ -428,9 +428,10 @@
                                     @endif
                                     @endforeach
                                     </div>
-                                    <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{{ $product->appends(['key' => $key_search])->links() }}</div>
+                                    <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{!!$product->appends(['key' => $key_search])->links() !!}</div> --}}
+                                    @include('page.result')
                                 </div>
-                                    <button id="button"  class="row" type="button" style="margin-left: auto; margin-right: auto;margin-bottom: 20px;display:none">Tải thêm</button>
+                                    {{-- <button id="button"  class="row" type="button" style="margin-left: auto; margin-right: auto;margin-bottom: 20px;display:none">Tải thêm</button> --}}
           <!-- /.row -->
 
         </div>
@@ -456,60 +457,132 @@
     <script src="GetDeal/Home page/vendor/jquery/jquery.min.js"></script>
     <script src="GetDeal/Home page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="GetDeal/Home page/js/jquery-1.9.1.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write ('<script src="GetDeal/Home page/js/jquery-1.9.1.min.js"><\/script>')</script>
     <script src="GetDeal/Home page/js/main.js"></script>
        <script type="text/javascript">
         $(document).ready(function(){
+         
+         var search = $('.search').val();
+         if(search=='')
+         search='flag';
+               $.get("ajax/filtersearch/"+search+"/flag/flag/1/2/3/4/flag/2",function(data){
+                    $('#filtersearch').html(data);
+                  });
             $('.checkvalue').change(function(){
                 // var pro = $('[name="pro"]:radio:checked').val();
-                document.getElementById("button").style.display = "block";
-                var flag = '1';
+                // var flag = '1';
                 var local = $('[name="local"]:radio:checked').val();
                 if(local ==null)
                     local ="flag";
-                var place = $('[name="place"]:checkbox:checked').val();
-                if(place==null)
-                place = "flag";
+                var test = $('[name="place"]:checkbox:checked').val();
+                var place = [];
+                if(test==null)
+              {
+                place[0] = "1";
+                place[1] = "2";
+                place[2] = "3";
+                place[3] = "4";
+              }
+              else
+              {
+                var checkbox = document.getElementsByName('place');
+                for(var i=0; i<4;i++)
+                {
+                  if (checkbox[i].checked === true)
+                  {
+                    place[i]=checkbox[i].value;
+                  }
+                  else
+                    place[i]='flag';
+                }
+              }
+              // alert(place);
+
                 var key = document.getElementById("key_search").value;
                 if(key=="")
                     key="flag";
                 var price = $('[name="price"]:radio:checked').val();
                 if(price == null)
                     price="flag";
-                if( $('[name="pro"]:radio:checked').val() !=null)
-                {
-                    key = $('[name="pro"]:radio:checked').val();
-                    flag ='2';
-                }
+                // if( $('[name="pro"]:radio:checked').val() !=null)
+                // {
+                //     key = $('[name="pro"]:radio:checked').val();
+                //     flag ='2';
+                // }
+                var key = $('[name="pro"]:radio:checked').val();
+                if(key ==null)
+                  key ="flag";
+                var key_search = $('.search').val(); 
+                if(key_search=='')
+                    key_search='flag';
                 var sort =$('[name="sort"]:radio:checked').val();
-                $.get("ajax/filtersearch/"+key+"/"+local+"/"+place+"/"+price+"/"+flag+"/"+sort,function(data){
+                $.get("ajax/filtersearch/"+key_search+"/"+key+"/"+local+"/"+place[0]+"/"+place[1]+"/"+place[2]+"/"+place[3]+"/"+price+"/"+sort,function(data){
                     $('#filtersearch').html(data);                 
                 });
-                 $.get("ajax/searchresult/"+key+"/"+local+"/"+place+"/"+price+"/"+flag,function(data){
+                 $.get("ajax/searchresult/"+key_search+"/"+key+"/"+local+"/"+place[0]+"/"+place[1]+"/"+place[2]+"/"+place[3]+"/"+price,function(data){
                     $('.search-result').html(data);                 
                 });
                  // $('.link').hide();
             });
-        });
-        $('#button').click(function(){
-          var a= $('.pagination li.active + li a').attr('href');
-          alert(a);
-          if(a!='undefined')
-          {
-          $.get(a,function(data){
-            document.getElementById('filtersearch').innerHTML += data;
-          });
-          
-          $('ul.pagination').remove();
-          $('ul.pagination').hide();
-           }
-           else
-           {
-            alert('Hết sản phẩm');
-             document.getElementByI('button').style.display = "none";
-           }
-          
+            $(document).load(function(){
+               var search = $('.search').val();
+               $.get("ajax/filtersearch/"+search+"/flag/flag/1/2/3/4/flag/1",function(data){
+                    $('#filtersearch').html(data);
+                  alert(search);});
             });
+            // $('.search').change(function(){
+            //   var key_search = $(this).val();
+            //   $.get("result/"+key_search,function(data){
+            //         $('#filtersearch').html(data);
+            //    $.get("findresult/"+key_search,function(data){
+            //         $('.search-result').html(data);
+            //       });
+            // });
+            // });
+            $('.pagination a').click(function(e){
+           e.preventDefault();
+           var page = $(this).attr('href');
+           getPosts(page);
+           $("html, body").animate({ scrollTop: 0 }, 2000);
+
+       });
+        });
+        // $('.page-link').click(function(){
+        //   var a = $(this).attr('href');
+        //   alert(a);
+        // });
+
+ 
+       function getPosts(page)
+       {
+           $.ajax({
+               type: "GET",
+               url: page
+           })
+           .success(function(data) {
+               $('#filtersearch').html(data);
+           });
+             
+       }
+        // $('#button').click(function(){
+        //   var a= $('.pagination li.active + li a').attr('href');
+        //   if(a)
+        //   {
+        //   $.get(a,function(data){
+        //     document.getElementById('filtersearch').innerHTML += data;
+        //   });
+          
+        //   $('ul.pagination').remove();
+        //   $('ul.pagination').hide();
+        //    }
+        //    else
+        //    {
+        //     alert('Hết sản phẩm');
+        //      // document.getElementByI('button').style.display = "none";
+        //      $('#button').hide();
+        //    }
+          
+        //     });
     </script>
   </body>
   
