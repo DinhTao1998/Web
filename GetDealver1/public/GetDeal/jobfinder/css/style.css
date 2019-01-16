@@ -962,15 +962,15 @@ a {
 
 .header-bg-color{
   background: rgb(241,230,74) !important;
-  background: linear-gradient(90deg, rgba(241,230,74,1) 18%, rgba(245,173,28,1) 57%) !important;
+  background-image: linear-gradient( 135deg, #FF6FD8 10%, #3813C2 100%) !important;
 }
 
 .site-section-bg{
   background: rgb(246,222,7) !important;
-  background: linear-gradient(90deg, rgba(246,222,7,1) 39%, rgba(224,146,63,1) 65%) !important;
+  background-image: linear-gradient( 135deg, #FF6FD8 10%, #3813C2 100%) !important;
 }
 
 .footer-bg-color{
   background: rgb(241,230,74) !important;
-  background: linear-gradient(90deg, rgba(241,230,74,1) 18%, rgba(245,173,28,1) 57%) !important;
+  background-image: linear-gradient( 135deg, #FF6FD8 10%, #3813C2 100%) !important;
 }

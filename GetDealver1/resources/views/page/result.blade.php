@@ -5,8 +5,10 @@
                                   
                                     <div class="card h-100 grow">
                                       <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}">
+                                        @if($value->sale >=50)
 
                                         <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div>
+                                        @endif
                                         <div class="card-img" style="height: 211.75px;">
                                           
                                             <img class="card-img-top" src="{{$value -> image}}"title="{{$value->product_title}}" alt="" style="max-height:212px"></a>  
@@ -18,7 +20,7 @@
 
                                                 <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" title="{{$value->product_title}}">{{$value ->product_name}}</a>
                                             </h4>
-                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}đ</span><span class="sale-tag">-{{$value ->sale}}%</span>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{number_format($value ->cost)}}đ</span><span class="sale-tag">-{{$value ->sale}}%</span>
                                             <p class="card-text"></p>
                                         </div>
                                         <div class="card-footer">
@@ -33,7 +35,9 @@
                                   
                                     <div class="card h-100 grow">
                                       <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}">
+                                        @if($value->sale >=50)
                                         <div class="flash-sale-div"><h3 class="flash-sale">FLASH SALE</h3></div>
+                                        @endif
                                         <div class="card-img" style="height: 211.75px;">
                                             <img class="card-img-top" src="{{$value -> image}}" title="{{$value->product_title}}" alt="" style="max-height:212px"></a>  
                                         </div>
