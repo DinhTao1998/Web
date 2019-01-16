@@ -23,9 +23,18 @@ class AdminController extends Controller
         $product = Product::paginate(20);
         return view('admin.quanlisanpham',compact('product'));
     }
-    public function getThemDanhMuc(Request $request ){
-        $tendm = $req->tendm;
-        dd($tendm);
+    public function getThemDanhMuc($ten,$hinh ){
+        ProductType::insert(['product_type_name'=>$ten,'image'=> $hinh]);
+        $product_type = ProductType::all();
+        return view('admin.danhmuc',compact('product_type'));
     }
+
+    public function getXoaDanhMuc($id){
+        ProductType::where('id',$id)->delete();
+        $product_type = ProductType::all();
+        return view('admin.danhmuc',compact('product_type'));
+    }
+
+
 }
 ?>

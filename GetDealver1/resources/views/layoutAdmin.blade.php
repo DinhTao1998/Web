@@ -124,8 +124,6 @@
         <!-- Demo scrGetDeal/Admin/ipts for this page-->
         <script src="GetDeal/Admin/js/demo/datatables-demo.js"></script>
         <script src="GetDeal/Admin/js/demo/chart-area-demo.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
-        @yield('script')
       </body>
 
       </html>

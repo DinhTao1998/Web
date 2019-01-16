@@ -21,8 +21,12 @@
               <h4 style="text-align: center">Thêm Danh Mục</h4>
             </a>
             <div class="collapse" id="themdanhmuc" style="text-align: center">
-              <lable>Tên danh mục <input type="text" name="tendm" placeholder="nhập tên danh mục"></able>
-              <button type="button" id="">Thêm</button>
+              {{-- <form action="admin/danhmuc" method="get" accept-charset="utf-8" role="search"> --}}
+              <lable>Tên danh mục <input type="text" id="tendm" name="tenloai" placeholder="nhập tên danh mục"></lable>
+              <label>Image <input type="text" id="hinh" name="hinh" placeholder="Nhập tên hình ảnh"></label>
+
+              <button type="button" id="btnthem">Thêm</button>
+            {{-- </form> --}}
             </div>
               <div class="table-responsive">
               <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
@@ -31,15 +35,29 @@
                   <tr>
                     <th>ID</th>
                     <th>Product Type Name</th>
-                    <th>Image</th>                  
+                    <th>Image</th>
+                    <th>Edit</th>  
+                    <th>Delete</th>
                   </tr>
                 </thead>
                 <div id="bangdanhmuc">
                 @foreach($product_type as $pr)
                 <tr>
                     <td>{{$pr->id}}</td>
-                    <td>{{$pr->product_type_name}}</td>
-                    <td>{{$pr->image}}</td>
+                    <td><input style="border:none; background-color: white" type="text" class="{{$pr->id}}" disabled="true" value="{{$pr->product_type_name}}"></td>
+                    <td><input style="border:none; background-color: white" type="text" class="{{$pr->id}}" disabled="true" value="{{$pr->image}}"></td>
+                    <td>
+                      <button type="button" value="{{$pr->id}}" class="{{$pr->id}} btnEdit" style="background-color: white; border:none">Edit&nbsp;
+                        <i class="fas fa-edit"></i>
+                      </button>
+                      <button type="button" id="btnsave" value="{{$pr->id}}" style="display:none">Save</button>
+                    </td>
+                    <td>
+                      <button type="button" class="btndelete" value="{{$pr->id}}" style="background-color: white; border:none">Delete&nbsp;
+                        <i class="fas fa-trash-alt"></i>
+                      </button>
+                    </td>
+
                 </tr>
                 @endforeach
               </div>
@@ -74,19 +92,33 @@
             </div>
           </div>
         </div>
-        @endsection
-        @section('script')
-        <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript">
           $(document).ready(function(){
-            $('#adddm').click(function(){
-              var tendm = $('[name="tendm"]:text').val();
-              // $.get("admin/danhmuc/them/"+tendm,function(data){
-              //   $('html').html(data);
-              // });
-              alert(tendm);
+            $('#btnthem').click(function(){
+              var ten = $('#tendm').val();
+              var hinh = $('#hinh').val();
+              $.get("admin/danhmuc/them/"+ten+"/"+hinh, function(data){
+                $('html').html(data);
+              });
+
             });
-          });
+
+            $('.btndelete').click(function(){
+              var id = $(this).val();
+              if(!confirm("Bạn có muốn xóa sản phẩm không")) return false;
+              $.get("admin/danhmuc/xoa/"+id, function(data){
+                $('html').html(data);
+              });
+            });
+
+            $('.btnEdit').click(function(){
+              // var diachi = $(this).val();
+              // document.getElementsByClassName($(this).val()).setAttribute('disabled','true');
+              $('input').attr('disabled','false');
+            });
+          })
         </script>
         @endsection
+    
 

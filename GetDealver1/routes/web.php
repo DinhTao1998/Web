@@ -58,8 +58,8 @@ Route:: group(['prefix'=>'admin'],function(){
 	Route::group(['prefix'=>'danhmuc'],function(){
 		Route::get('danhsach','AdminController@getDanhMuc');
 		Route::get('sua','AdminController@getSuaDanhMuc');
-		Route::post('them','AdminController@getThemDanhMuc');
-		Route::get('xoa','AdminController@getXoaDanhMuc');
+		Route::get('them/{ten}/{hinh}','AdminController@getThemDanhMuc');
+		Route::get('xoa/{id}','AdminController@getXoaDanhMuc');
 	});
 	Route::get('trangchu','AdminController@getLayout');
 	Route::get('quanlisanpham','AdminController@getDanhSachSanPham');
