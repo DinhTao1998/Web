@@ -391,7 +391,7 @@
 
                                                 <a href="https://fast.accesstrade.com.vn/deep_link/5027165606269731203?url={{$value -> link}}" >{{$value ->product_name}}</a>
                                             </h4>
-                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}đ</span><span class="sale-tag">-{{$value ->sale}}%</span>
+                                            <span class="final-price">{{number_format($value -> price)}}đ</span><span class="price-regular">{{$value ->cost}}đ</span><span class="sale-tag">-{{$value ->sale}}</span>
                                             <p class="card-text"></p>
                                         </div>
                                         <div class="card-footer">
