@@ -98,6 +98,12 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý danh mục sản phẩm</span></a>
         </li>
+
+         <li class="nav-item">
+        <a class="nav-link" href="table_email.php">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Quản lý Email</span></a>
+        </li>
       </ul>
 
       <div id="content-wrapper">
@@ -217,7 +223,7 @@
         <script src="js/sb-admin.min.js"></script>
 
         <!-- Demo scripts for this page-->
-        <!-- <script src="js/demo/datatables-demo.js"></script> -->
+       <!--  <script src="js/demo/datatables-demo.js"></script> -->
         <script src="js/demo/chart-area-demo.js"></script>
 
       </body>
