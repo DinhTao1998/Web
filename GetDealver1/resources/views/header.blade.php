@@ -136,10 +136,10 @@
                           </div>
                         </form>
                       </li>
-                      <li><a href="categories.html">Trang chủ</a></li>
+                      <li><a href="index">Trang chủ</a></li>
                       <li class="has-children">
-                        <a href="categories.html">Danh mục</a>
-                        <ul class="dropdown arrow-top">
+                        <a href="admin/dangnhap">Đăng nhập</a>
+                        {{-- <ul class="dropdown arrow-top">
                           <li><a href="categories.html">Category</a></li>
                           <li><a href="#">Browse Candidates</a></li>
                           <li><a href="new-post.html">Post a Job</a></li>
@@ -153,10 +153,10 @@
                             </ul>
                           </li>
 
-                        </ul>
+                        </ul> --}}
                       </li>
-                      <li><a href="contact.html">Giới thiệu</a></li>
-                      <li><a href="contact.html">Liên hệ</a></li>
+                      <li><a href="gioithieu">Giới thiệu</a></li>
+                      <li><a href="lienhe">Liên hệ</a></li>
                       
                     </ul>
                   </div>

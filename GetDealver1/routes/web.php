@@ -61,10 +61,17 @@ Route:: group(['prefix'=>'admin'],function(){
 		Route::get('danhsach','AdminController@getDanhMuc');
 		Route::get('sua','AdminController@getSuaDanhMuc');
 		Route::get('editdone','AdminController@getEditDoneDanhMuc');
-		Route::get('them/{ten}/{hinh}','AdminController@getThemDanhMuc');
-		Route::get('xoa/{id}','AdminController@getXoaDanhMuc');
+		Route::get('them','AdminController@getThemDanhMuc');
+		Route::get('xoa','AdminController@getXoaDanhMuc');
 	});
 	Route::get('trangchu','AdminController@getLayout');
 	Route::get('quanlisanpham','AdminController@getDanhSachSanPham');
+	Route::get('email','AdminController@getEmail');
+	Route::get('xulimail','AdminController@getXuliMail');
 
 });
+
+Route::get('searchlanding','GetDealController@getSearchLanding');
+Route::get('gioithieu','GetDealController@getGioiThieu');
+Route::get('lienhe','GetDealController@getLienHe');
+Route::post('lienhe','GetDealController@postLienHe');

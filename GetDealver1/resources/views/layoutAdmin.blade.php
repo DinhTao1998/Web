@@ -59,7 +59,7 @@
           <a class="dropdown-item" href="#">Cài đặt</a>
           <!-- <a class="dropdown-item" href="#">Activity Log</a> -->
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Đăng xuất</a>
+          <a class="dropdown-item" href="admin/dangnhap" data-toggle="modal" data-target="#logoutModal">Đăng xuất</a>
         </div>
       </li>
     </ul>
@@ -83,7 +83,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Bảng đăng nhập</h6>
-          <a class="dropdown-item" href="login.html">Đăng nhập</a>
+          <a class="dropdown-item" href="admin/dangnhap">Đăng nhập</a>
           <a class="dropdown-item" href="register.html">Đăng kí</a>
           <a class="dropdown-item" href="forgot-password.html">Quên mật khẩu</a>
         </div>
@@ -98,6 +98,12 @@
         <a class="nav-link" href="admin/danhmuc/danhsach">
           <i class="fas fa-fw fa-table"></i>
           <span>Quản lý danh mục sản phẩm</span></a>
+        </li>
+
+         <li class="nav-item">
+        <a class="nav-link" href="admin/email">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Quản lý Email &nbsp;&nbsp;<button style="border:1px solid red ;background-color: red;border-radius:15px;width:30px;height: 30px">{{$send}}</button></span></a>
         </li>
         
       </ul>

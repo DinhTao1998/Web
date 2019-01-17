@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\ProductType;
 use App\Place;
+use App\Email;
 // use App\Place;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class GetDealController extends Controller
     public function getIndex(){
         $product_type = ProductType::All();
 
-    	return view('page.landing',compact('product_type'));
+    	return view('landingpage.index',compact('product_type'));
     }
     public function getHome(){
     	// $product = Product::where('place',1)-> get();
@@ -24,6 +25,7 @@ class GetDealController extends Controller
     	return view('page.home',compact('product','place'));
     }
     public function getSearch(request $req){
+        $noiban ='1000';
         $key_search = $req->key;
         if(strpos($req->key, ' ')!==false)
         $req->key = str_replace(" ", '%',$req->key);
@@ -34,7 +36,7 @@ class GetDealController extends Controller
         $pr_location = Product::select('location')->distinct()->get();
         $place = Place::all();
        
-        return view('page.search',compact('product','key_search','product_type','pr_location','place','count'));
+        return view('page.search',compact('product','key_search','product_type','pr_location','place','count','noiban'));
     }
     public function getResult($key_search ){
         if(strpos($key_search, ' ')!==false)
@@ -150,6 +152,60 @@ class GetDealController extends Controller
         $product=Product::where('type_product',$pro)->where('location',$local)->where('place',$place)->orderBy('price','asc')->paginate(100);
         return view('page.filtersearch',compact('product','count','key_search'));
 
+    }
+
+    public function getSearchLanding(request $req){
+        $key_search =$req->tensp;
+        $noiban='flag';
+        if(strpos($key_search, ' ')!==false)
+        $req->key = str_replace(" ", '%',$req->key);
+        if($req->noiban =='tiki')
+            $noiban ='1';
+        if($req->noiban =='hasaki')
+            $noiban ='4';
+        if($req->noiban =='lazada')
+            $noiban ='3';
+        // if($req->noiban ==null)
+        //     $noiban == null;
+        // dd($noiban);
+        if($key_search != null)
+        {
+            if($noiban != 'flag')
+            {
+                $product = Product::where('product_title','like','%'.$key_search.'%')->where('place','1')->orderBy('price','asc')->paginate(40);
+            }
+            else
+            {
+                 $product = Product::where('product_title','like','%'.$key_search.'%')->orderBy('price','asc')->paginate(40);
+            }
+        }
+        else{
+             $product = Product::where('place',$noiban)->orderBy('price','asc')->paginate(40);
+        }
+        $count = sizeof( Product::where('product_name','like','%'.$req->tensp.'%')->orderBy('price','asc')->get());
+        $product_type = ProductType::all();
+        $pr_location = Product::select('location')->distinct()->get();
+        $place = Place::all();
+        // dd($product);
+       
+        return view('page.search',compact('product','key_search','product_type','pr_location','place','count','noiban'));
+    }
+    public function getGioiThieu(){
+        return view('landingpage.gioithieu');
+    }
+
+     public function getLienHe(){
+        return view('landingpage.lienhe');
+    }
+     public function postLienHe(request $req){
+        $name = $req->fullname;
+        $email =$req->email;
+        $phone = $req->phone;
+        $content = $req->content;
+        $date = date('Y-m-d H:i:s');
+        // dd($name,$email,$phone,$req->content,$date);
+        Email::insert(['name'=>$name,'email'=>$email, 'phone'=>$phone,'content'=>$content,'created_at'=>$date,'updated_at'=>$date,'status'=>'0']);
+        return view('landingpage.index');
     }
 }
 ?>

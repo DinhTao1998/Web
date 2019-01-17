@@ -16,17 +16,22 @@
               <i class="fas fa-table"></i>
             Bảng danh mục sản phẩm</div>
             <div class="card-body">
+              @if(session('thongbao'))
+              <div class="alert alert-success">
+                {{session('thongbao')}}
+              </div>
+              @endif
                <div >
             <a data-toggle="collapse" href="#themdanhmuc">
               <h4 style="text-align: center">Thêm Danh Mục</h4>
             </a>
             <div class="collapse" id="themdanhmuc" style="text-align: center">
-              {{-- <form action="admin/danhmuc" method="get" accept-charset="utf-8" role="search"> --}}
+              <form action="admin/danhmuc/them" method="get" accept-charset="utf-8">
               <lable>Tên danh mục <input type="text" id="tendm" name="tenloai" placeholder="nhập tên danh mục"></lable>
               <label>Image <input type="text" id="hinh" name="hinh" placeholder="Nhập tên hình ảnh"></label>
 
-              <button type="button" id="btnthem">Thêm</button>
-            {{-- </form> --}}
+              <button type="submit" id="btnthem">Thêm</button>
+            </form>
             </div>
               <div class="table-responsive">
               <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
@@ -54,9 +59,11 @@
                     </form>
                     </td>
                     <td>
-                      <button type="button" class="btndelete" value="{{$pr->id}}" style="background-color: white; border:none">Delete&nbsp;
+                      <form action="admin/danhmuc/xoa" method="get">
+                      <button type="submit" class="btndelete" name='btnxoa'value="{{$pr->id}}" style="background-color: white; border:none">Delete&nbsp;
                         <i class="fas fa-trash-alt"></i>
                       </button>
+                      </form>
                     </td>
 
                 </tr>
@@ -88,7 +95,7 @@
               <div class="modal-body">Chọn "Đăng xuất" để kết thúc phiên hoạt động</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                <a class="btn btn-primary" href="login.html">Đăng Xuất</a>
+                <a class="btn btn-primary" href="admin/dangnhap">Đăng Xuất</a>
               </div>
             </div>
           </div>
@@ -96,21 +103,21 @@
             <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript">
           $(document).ready(function(){
-            $('#btnthem').click(function(){
-              var ten = $('#tendm').val();
-              var hinh = $('#hinh').val();
-              $.get("admin/danhmuc/them/"+ten+"/"+hinh, function(data){
-                $('html').html(data);
-              });
+            // $('#btnthem').click(function(){
+            //   var ten = $('#tendm').val();
+            //   var hinh = $('#hinh').val();
+            //   $.get("admin/danhmuc/them/"+ten+"/"+hinh, function(data){
+            //     $('html').html(data);
+            //   });
 
-            });
+            // });
 
             $('.btndelete').click(function(){
               var id = $(this).val();
               if(!confirm("Bạn có muốn xóa sản phẩm không")) return false;
-              $.get("admin/danhmuc/xoa/"+id, function(data){
-                $('html').html(data);
-              });
+              // $.get("admin/danhmuc/xoa/"+id, function(data){
+              //   $('html').html(data);
+              // });
             });
 
             // $('.btnEdit').click(function(){

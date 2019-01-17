@@ -7,14 +7,14 @@
             <li class="breadcrumb-item">
               <a href="index.html">Bảng điều khiển</a>
             </li>
-            <li class="breadcrumb-item active">Quản lý danh mục sản phẩm</li>
+            <li class="breadcrumb-item active">Quản lý Email</li>
           </ol>
 
           <!-- DataTables Example -->
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-            Bảng danh mục sản phẩm</div>
+            Bảng quản lý Email</div>
             <div class="card-body">
               <div class="table-responsive">
               <table class="table table-bordered table-earning thead th" id="dataTable" width="100%" cellspacing="0">
@@ -22,28 +22,40 @@
                 <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Product name</th>
-                    <th>Link</th>  
-                     <th>Price</th>
-                    <th>Cost</th>
-                    <th>Sale</th>
-                    <th>Location</th>                     
+                    <th>Họ và tên</th>
+                    <th>Email</th>
+                    <th>Điện thoại</th>
+                    <th>Nội dung</th>
+                    <th>Ngày gửi</th>
+                    <th>Trạng thái</th>                
                   </tr>
                 </thead>
-                @foreach($product as $pr)
-                <tr>
-                    <td>{{$pr->id}}</td>
-                    <td>{{$pr->product_title}}</td>
-                    <td>{{$pr->link}}</td>
-                    <td>{{number_format($pr->price)}}</td>
-                    <td>{{number_format($pr->cost)}}</td>
-                    <td>{{$pr->sale}}</td>
-                    <td>{{$pr->location}}</td>
+                @foreach($email as $e)
+                @if($e->status ==1)
+                <tr id="{{$e->id}}" style="background-color: red">
+                  <td>{{$e->id}}</td>
+                  <td>{{$e->name}}</td>
+                  <td>{{$e->email}}</td>
+                  <td>{{$e->phone}}</td>
+                  <td>{{$e->content}}</td>
+                  <td>{{$e->created_at}}</td>
+                  <td>Đã xử lí</td>
+{{--                   <td><button type="button" value="{{$e->id}}" id="btnxem" style="background-color: white; border:none">Đã xem &nbsp;<i class="fas fa-eye"></i></button></td> --}}
                 </tr>
+                @else
+                 <tr id="{{$e->id}}">
+                  <td>{{$e->id}}</td>
+                  <td>{{$e->name}}</td>
+                  <td>{{$e->email}}</td>
+                  <td>{{$e->phone}}</td>
+                  <td>{{$e->content}}</td>
+                  <td>{{$e->created_at}}</td>
+                  <td> <form action="admin/xulimail" method="get"><button type="submit" value="{{$e->id}}" name="btnxem" style="background-color: white; border:none">Mới &nbsp;<i class="fas fa-eye"></i></button></form></td>
+                </tr>
+                @endif
                 @endforeach
               </table>
             </div>
-             <div class="row link" style="width: 520px; margin-left: 225px; margin-right: -15px;">{!! $product->links() !!}</div>
           </div>
           <div class="card-footer small text-muted">Cập nhật lúc 11:59 PM</div>
         </div>

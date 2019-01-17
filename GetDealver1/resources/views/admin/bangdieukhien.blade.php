@@ -1,6 +1,6 @@
 @extends('layoutAdmin')
  @section('content')
-<div class="container-fluid">
+ <div class="container-fluid">
 
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
@@ -13,7 +13,7 @@
           <!-- Icon Cards-->
           <div class="row">
 
-            <div class="col-sm-6 col-lg-6">
+            <div class="col-sm-6 col-lg-4">
               <div class="overview-item overview-item--c1">
                 <div class="overview__inner">
                   <div class="overview-box clearfix">
@@ -28,7 +28,7 @@
                 <div class="overview-chart">
                   <canvas id="widgetChart1"></canvas>                               
                 </div> 
-                <a class="card-footer text-white clearfix small z-1" href="table.php">
+                <a class="card-footer text-white clearfix small z-1" href="admin/quanlisanpham">
                   <span class="float-left">Chi tiết</span>
                   <span class="float-right">
                     <i class="fa fa-arrow-circle-right"></i>
@@ -37,8 +37,8 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-lg-6">
-            <div class="overview-item overview-item--c3">
+          <div class="col-sm-6 col-lg-4">
+            <div class="overview-item overview-item--c2">
               <div class="overview__inner">
                 <div class="overview-box clearfix">
                   <div class="icon">
@@ -52,7 +52,32 @@
                 <div class="overview-chart">
                   <canvas id="widgetChart3"></canvas>
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="tableproduct.php">
+                <a class="card-footer text-white clearfix small z-1" href="admin/danhmuc/danhsach">
+                 <span class="float-left">Chi tiết</span>
+                 <span class="float-right">
+                  <i class="fa fa-arrow-circle-right"></i>
+                </span>
+              </a>                                               
+            </div>
+          </div>
+        </div>
+
+         <div class="col-sm-6 col-lg-4">
+            <div class="overview-item overview-item--c4">
+              <div class="overview__inner">
+                <div class="overview-box clearfix">
+                  <div class="icon">
+                    <i class="zmdi zmdi-calendar-note"></i>
+                  </div>
+                  <div class="text">
+                    <h2>{{$email}}</h2>
+                    <span>Danh mục Email</span>
+                  </div>
+                </div>
+                <div class="overview-chart">  
+                  <canvas id="widgetChart3"></canvas>
+                </div>
+                <a class="card-footer text-white clearfix small z-1" href="admin/email">
                  <span class="float-left">Chi tiết</span>
                  <span class="float-right">
                   <i class="fa fa-arrow-circle-right"></i>
@@ -67,14 +92,20 @@
         <div class="col-lg-12">
           <div class="card-header">
             <i class="fas fa-table"></i>
-            <a class="card-footer1 text-white clearfix small2 z-1" href="table.php">
+            <a class="card-footer1 text-white clearfix small2 z-1" href="admin/quanlisanpham">
             Bảng sản phẩm</a>
           </div>
 
           <div class="card-header">
             <i class="fas fa-table"></i>
-            <a class="card-footer1 text-white clearfix small2 z-1" href="tableproduct.php">
+            <a class="card-footer1 text-white clearfix small2 z-1" href="admin/danhmuc/danhsach">
             Bảng danh mục sản phẩm</a>
+          </div>
+
+            <div class="card-header">
+            <i class="fas fa-table"></i>
+            <a class="card-footer1 text-white clearfix small2 z-1" href="admin/email">
+            Bảng danh mục Email </a>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -94,8 +125,9 @@
               <div class="modal-body">Chọn "Đăng xuất" để kết thúc phiên hoạt động</div>
               <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Hủy</button>
-                <a class="btn btn-primary" href="login.html">Đăng Xuất</a>
+                <a class="btn btn-primary" href="admin/dangnhap">Đăng Xuất</a>
               </div>
             </div>
           </div>
+        </div>
           @endsection
