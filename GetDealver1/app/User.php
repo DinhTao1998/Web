@@ -8,10 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    // protected $table = "account"
-    // public function position(){
-    //     return $this -> belongTo('app\Position','pos_id','id')
-    // }
+
     use Notifiable;
 
     /**

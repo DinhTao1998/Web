@@ -44,13 +44,14 @@
                 @foreach($product_type as $pr)
                 <tr>
                     <td>{{$pr->id}}</td>
-                    <td><input style="border:none; background-color: white" type="text" class="{{$pr->id}}" disabled="true" value="{{$pr->product_type_name}}"></td>
-                    <td><input style="border:none; background-color: white" type="text" class="{{$pr->id}}" disabled="true" value="{{$pr->image}}"></td>
+                    <td>{{$pr->product_type_name}}</td>
+                    <td>{{$pr->image}}</td>
                     <td>
-                      <button type="button" value="{{$pr->id}}" class="{{$pr->id}} btnEdit" style="background-color: white; border:none">Edit&nbsp;
+                      <form action="admin/danhmuc/sua" method="get">
+                      <button type="submit" value="{{$pr->id}}" name="btnEdit" class="btnEdit" style="background-color: white; border:none">Edit&nbsp;
                         <i class="fas fa-edit"></i>
                       </button>
-                      <button type="button" id="btnsave" value="{{$pr->id}}" style="display:none">Save</button>
+                    </form>
                     </td>
                     <td>
                       <button type="button" class="btndelete" value="{{$pr->id}}" style="background-color: white; border:none">Delete&nbsp;
@@ -112,11 +113,12 @@
               });
             });
 
-            $('.btnEdit').click(function(){
-              // var diachi = $(this).val();
-              // document.getElementsByClassName($(this).val()).setAttribute('disabled','true');
-              $('input').attr('disabled','false');
-            });
+            // $('.btnEdit').click(function(){
+            //    var id = $(this).val();
+            //    $.get("admin/danhmuc/sua/"+id, function(data){
+            //     $('html').html(data);
+            //   });
+            // });
           })
         </script>
         @endsection

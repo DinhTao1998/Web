@@ -122,7 +122,7 @@
         <script src="GetDeal/Admin/js/sb-admin.min.js"></script>
 
         <!-- Demo scrGetDeal/Admin/ipts for this page-->
-        <script src="GetDeal/Admin/js/demo/datatables-demo.js"></script>
+        {{-- <script src="GetDeal/Admin/js/demo/datatables-demo.js"></script> --}}
         <script src="GetDeal/Admin/js/demo/chart-area-demo.js"></script>
       </body>
 

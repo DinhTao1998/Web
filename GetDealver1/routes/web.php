@@ -54,10 +54,13 @@ Route::get('findresult/{key_search}','GetDealController@getFindResult');
 // 	'as'=>'quanlisanpham',
 // 	'uses'=> 'AdminController@getDanhSachSanPham'
 // ]);
+Route::get('admin/dangnhap','AdminController@getDangNhap');
+Route::post('admin/dangnhap','AdminController@postDangNhap');
 Route:: group(['prefix'=>'admin'],function(){
 	Route::group(['prefix'=>'danhmuc'],function(){
 		Route::get('danhsach','AdminController@getDanhMuc');
 		Route::get('sua','AdminController@getSuaDanhMuc');
+		Route::get('editdone','AdminController@getEditDoneDanhMuc');
 		Route::get('them/{ten}/{hinh}','AdminController@getThemDanhMuc');
 		Route::get('xoa/{id}','AdminController@getXoaDanhMuc');
 	});
